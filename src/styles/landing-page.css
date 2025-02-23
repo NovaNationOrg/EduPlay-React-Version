@@ -22,9 +22,9 @@ and (max-device-width: 1000px)
         margin-right: 0;
         margin-bottom: 0;
         margin-left: 0;
-        padding-top: 12%;
+        padding-top: 15%;
         padding-right: 0;
-        padding-bottom: 5px;
+        padding-bottom: 0px;
         padding-left: 0;
         text-align: center;
     }
@@ -90,11 +90,10 @@ and (max-device-width: 1000px)
         color: rgb(163, 163, 163);
         margin-top: 22px;
         position: absolute;
-        max-width: 80%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 5px;
-        width: 90vh;
+        width: 85%;
         left: 50%;
         transform: translate(-50%, -50%);
         
@@ -104,7 +103,7 @@ and (max-device-width: 1000px)
         display: inline-flex;
         flex:1;
         margin-bottom: 5px;
-        margin-left: 40px;
+        margin-left: 35px;
 
 
     }
@@ -112,12 +111,38 @@ and (max-device-width: 1000px)
     .character-countdown{
         display: inline-flex;
         flex:1;
-        margin-left: 59%;
+        margin-left: 63%;
         margin-bottom: 5px;
     }
     .textbox-heading{
         display: flex;
         flex: row;
+    }
+
+    .join-button {
+        margin-top: 70px;
+        font-size: 16px;
+        font-family: InterBold;
+        color: rgb(255, 255, 255);
+        margin-left: 0;
+        width: 100%;
+        padding: 8px 30%;
+        margin-left:auto;
+        margin-right:auto;
+        display: block;
+        border-radius: 14px;
+        background-color: rgb(39, 139, 254);
+    }
+
+    .join-area {
+        margin-top: 50px;
+        margin-left: 0;
+        align-self: center;
+        width: 60%;
+        margin-left:auto;
+        margin-right:auto;
+        display: block;
+        text-decoration: none;
     }
 
 }
