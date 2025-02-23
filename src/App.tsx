@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-
+import Home from './components/main-header'
+import  LandingPage  from './pages/landing-page'
 
 
 
@@ -9,8 +10,8 @@ function App() {
 
   return (
     <>
-    
-]    </>
+      <LandingPage />
+    </>
   )
 }
 
