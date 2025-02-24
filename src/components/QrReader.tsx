@@ -1,14 +1,34 @@
-// import { useEffect, useRef, useState } from "react"; #FIX Find working qr code library, or properly implement thsi one
-// // Styles
-// import "./QrStyles.css";
+import { useEffect, useRef, useState } from "react"; 
+// Styles #FIX Find working qr code library, or properly implement thsi one
+import "./QrStyles.css";
 
-// // Qr Scanner
-// import QrScanner from "qr-scanner";
-// import QrFrame from "../assets/qr-frame.svg";
+// Qr Scanner
+import QrScanner from "qr-scanner";
+import QrFrame from "../assets/qr-frame.svg";
+import { addJeopardyGame, fetchJeopardyGame } from "../database/scripts/jeopardy-loading-func";
 
+
+const loadJeopardy = () =>{
+
+    const [scannedResult, setScannedResult] = useState<string | undefined>("");
+
+    let splitData = scannedResult?.split("")
+
+    if(splitData?.length!=57){
+        //Alert of invalid gameCode
+    }
+
+    if(splitData!=undefined)
+        sessionStorage.setItem("curr_game",splitData[0])
+    
+    addJeopardyGame(splitData)
+    fetchJeopardyGame(sessionStorage.getItem("curr_game")!)
+
+    
+}
 // const QrReader = () => {
 //     // QR States
-//     const scanner = useRef<QrScanner>();
+//     const scanner = useRef<>();
 //     const videoEl = useRef<HTMLVideoElement>(null);
 //     const qrBoxEl = useRef<HTMLDivElement>(null);
 //     const [qrOn, setQrOn] = useState<boolean>(true);

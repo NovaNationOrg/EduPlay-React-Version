@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
+    "dexie": "^4.0.11",
+    "dexie-react-hooks": "^1.1.7",
     "eduplay-react-version": "file:",
+    "motion": "^12.4.7",
     "qr-scanner": "^1.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

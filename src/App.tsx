@@ -7,7 +7,6 @@ import { BrowserRouter, Outlet, Routes, Route } from 'react-router-dom'
 
 
 function App() {
-
   return (
     <>
 
