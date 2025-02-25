@@ -1,0 +1,39 @@
+/* @import url("./fonts.css"); */
+
+@media only screen 
+and (max-device-width: 1000px)
+{ 
+
+.jeopardy-header{
+    background: rgb(39,139,254);
+    background: linear-gradient(0deg, rgba(39,139,254,1) 0%, rgba(255,1,221,1) 100%);
+    font-size: 24px;
+    font-family: FontDingerSwanky;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 15%;
+    padding-right: 0;
+    padding-bottom: 0px;
+    padding-left: 0;
+    text-align: center;
+}
+
+.hangman-header{
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(255,1,221,1) 100%);
+    font-size: 24px;
+    font-family: InterBold;
+    margin-top: 0;
+    margin-right: 0;
+    color:aliceblue;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 15%;
+    padding-right: 0;
+    padding-bottom: 0px;
+    padding-left: 0;
+    text-align: center;
+}
+}
