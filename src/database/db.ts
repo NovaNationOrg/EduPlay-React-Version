@@ -5,13 +5,13 @@ import { populate } from './scripts/populateDb';
 
 const db = new Dexie('EduPlayDB') as Dexie &{
     gameList: EntityTable<Game,'gameNum'>;
-    jeopardyGames: EntityTable<JeopardyGame,'id'>;
+    jeopardyData: EntityTable<JeopardyGame,'id'>;
    
 }
 
 db.version(1).stores({
     gameList:'++gameNum,game_code,game_id,date',
-    jeopardyGames:'++id,game_id,theme,question,answer,points'
+    jeopardyData:'++id,game_id,theme,question,answer,points'
 })
 
 db.on('populate', populate);

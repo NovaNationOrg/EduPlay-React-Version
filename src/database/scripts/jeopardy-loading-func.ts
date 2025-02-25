@@ -11,32 +11,32 @@ export async function addJeopardyGame(jeopardyContent:string[]|undefined){
         game_id: game_id
     })
 
-    db.jeopardyGames.add
    
     let theme = ""
     let offset = 0
     for(let i=2;i < jeopardyContent!.length;i++){
-        if((i-2) %11){
+        if((i-2) %11==0){//A theme is present every 11 lines starting on pos 2
             theme = jeopardyContent![i]
-            offset =0
+            offset = 0
         }
         else{
-            await db.jeopardyGames.add({
+            await db.jeopardyData.add({
                 game_id:game_id,
                 theme:theme,
                 question:jeopardyContent![i],
                 answer:jeopardyContent![i+1],
-                points: ((i-2) %11) + 1 - offset  
+                points: (((i-2) %11) + 1 - offset) * 100   
             })
-            i+=2
+            offset++
+            i++
         }
     }
 }
 
-   export function fetchJeopardyGame(game_id:string){
+export function fetchJeopardyGame(game_id:string){
         const gameData = useLiveQuery(
             async () =>{
-                const gameData = await db.jeopardyGames
+                const gameData = await db.jeopardyData
                     .where('game_id')
                     .equals(game_id)
                     .toArray()

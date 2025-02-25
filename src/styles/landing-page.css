@@ -1,5 +1,5 @@
 /* Fonts import */
-@import url("./fonts.css");
+/* @import url("./fonts.css"); */
 
 
 @media only screen 
@@ -15,21 +15,6 @@ and (max-device-width: 1000px)
         font-family: InterBold;
     }
 
-    .header{
-        background: rgb(39,139,254);
-        background: linear-gradient(0deg, rgba(39,139,254,1) 0%, rgba(255,1,221,1) 100%);
-        font-size: 24px;
-        font-family: FontDingerSwanky;
-        margin-top: 0;
-        margin-right: 0;
-        margin-bottom: 0;
-        margin-left: 0;
-        padding-top: 15%;
-        padding-right: 0;
-        padding-bottom: 0px;
-        padding-left: 0;
-        text-align: center;
-    }
       
     
     .panel{
@@ -110,6 +95,11 @@ and (max-device-width: 1000px)
 
     }
 
+    #reader{
+        max-width: 300px;
+    
+    }
+
     .character-countdown{
         display: inline-flex;
         flex:1;
@@ -126,9 +116,8 @@ and (max-device-width: 1000px)
         font-size: 16px;
         font-family: InterBold;
         color: rgb(255, 255, 255);
-        margin-left: 0;
         width: 100%;
-        padding: 8px 30%;
+        padding: 8px 2vh;
         margin-left:auto;
         margin-right:auto;
         display: block;
