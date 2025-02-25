@@ -1,9 +1,8 @@
-import { MouseEventHandler, useEffect, useState } from "react"
+import { MouseEventHandler, useState } from "react"
 import Header from "../components/header"
 import { Link } from "react-router-dom";
 import { db } from "../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
-import { motion } from "motion/react";
 import "../styles/landing-page.css"
 
 

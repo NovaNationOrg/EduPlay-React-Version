@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import Header from './components/header'
 import  LandingPage  from './pages/landing-page'
-import { BrowserRouter, Outlet, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "./styles/fonts.css"
 import ScanningPage from './pages/scanning-page'
 
