@@ -1,0 +1,58 @@
+@media only screen and (max-device-width: 1000px) {
+
+    body {
+        background-color: rgb(24, 24, 24);
+        height: 100%;
+        color: rgb(255, 255, 255);
+        font-family: InterBold;
+    }
+
+    .main-tab {
+        align-self: center;
+        width: 100%;
+        display: block;
+        background-color: black;
+        color: white;
+        font-family: Jersey15;
+        font-size: 11vw;
+        padding: 20px;
+        border: 2px dotted #FF13F0;
+        margin-bottom: 5%;
+    }
+
+    .tab-area {
+        margin-top: 10%;
+        margin-bottom: 5%;
+        align-self: center;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        text-decoration: none;
+    }
+
+    .heading-text {
+        margin-top: 5%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        font-family: Jersey15;
+        font-size: 14vw;
+    }
+
+    .return-button {
+        margin-top: 5%;
+        text-align: center;
+        margin-left: auto;
+        margin-right: 10px;
+        display: block;
+        font-family: InterBold;
+        font-size: 4.5vw;
+        background-color: rgb(254, 39, 43);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        min-width: 20%;
+    }
+}
