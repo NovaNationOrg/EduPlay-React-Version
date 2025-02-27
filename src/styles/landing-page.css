@@ -2,36 +2,33 @@
 /* @import url("./fonts.css"); */
 
 
-@media only screen 
-and (max-device-width: 1000px)
-{ 
+@media only screen and (max-device-width: 1000px) {
 
-    
-
-    body{
+    body {
         background-color: rgb(24, 24, 24);
         height: 100%;
-        color:rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
         font-family: InterBold;
     }
 
-      
-    
-    .panel{
+
+
+    .panel {
         height: 100vh;
         width: 100%;
         display: flex;
         flex-direction: column;
     }
+
     .top-segment {
-        flex:55;
+        flex: 55;
         border-bottom-width: 2px;
         border-bottom-color: white;
         border-bottom-style: solid;
     }
-    
-    .bottom-segment{
-        flex:45;
+
+    .bottom-segment {
+        flex: 45;
     }
 
 
@@ -41,15 +38,15 @@ and (max-device-width: 1000px)
         font-family: InterBold;
     }
 
-    .formArea{
+    .formArea {
         margin-top: 15%;
-        position:relative;
+        position: relative;
 
     }
 
     .recentLabel {
         font-size: 18px;
-        flex:4;
+        flex: 4;
         margin-top: 15px;
         margin-left: 10px;
     }
@@ -63,7 +60,7 @@ and (max-device-width: 1000px)
         font-family: InterBold;
         color: rgb(255, 255, 255);
         margin-top: 3%;
-        flex:1;
+        flex: 1;
     }
 
     .join-textbox {
@@ -71,7 +68,7 @@ and (max-device-width: 1000px)
         padding-top: 6px;
         padding-bottom: 4px;
         border-radius: 5px;
-        border-style:solid ;
+        border-style: solid;
         font-size: 18px;
         background-color: rgb(36, 36, 36);
         color: rgb(163, 163, 163);
@@ -83,30 +80,31 @@ and (max-device-width: 1000px)
         width: 85%;
         left: 50%;
         transform: translate(-50%, -50%);
-        
+
     }
 
-    .name-label{
+    .name-label {
         display: inline-flex;
-        flex:1;
+        flex: 1;
         margin-bottom: 5px;
         margin-left: 35px;
 
 
     }
 
-    #reader{
+    #reader {
         max-width: 300px;
-    
+
     }
 
-    .character-countdown{
+    .character-countdown {
         display: inline-flex;
-        flex:1;
+        flex: 1;
         margin-left: 63%;
         margin-bottom: 5px;
     }
-    .textbox-heading{
+
+    .textbox-heading {
         display: flex;
         flex: row;
     }
@@ -118,8 +116,8 @@ and (max-device-width: 1000px)
         color: rgb(255, 255, 255);
         width: 100%;
         padding: 8px 2vh;
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
         display: block;
         border-radius: 14px;
         background-color: rgb(39, 139, 254);
@@ -130,8 +128,8 @@ and (max-device-width: 1000px)
         margin-left: 0;
         align-self: center;
         width: 60%;
-        margin-left:auto;
-        margin-right:auto;
+        margin-left: auto;
+        margin-right: auto;
         display: block;
         text-decoration: none;
     }
