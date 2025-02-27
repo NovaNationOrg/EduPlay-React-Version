@@ -71,7 +71,7 @@ export default function ListData({ type }: GameType) {
         if (type == "Tier") {
             if (tiers != undefined)
                 tabElement = tiers.map((tier, i) =>
-                    <Link className="tab-area" to={"/jeopardyGame-question"} key={i}>
+                    <Link className="tab-area" to={"/jeopardyGame/question"} key={i}>
                         <button className="main-tab" onClick={() => {
                             saveTier(tier.toString());
                         }}>
