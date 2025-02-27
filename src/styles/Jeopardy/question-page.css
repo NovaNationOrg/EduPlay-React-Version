@@ -1,0 +1,90 @@
+@media only screen and (max-device-width: 1000px) {
+
+    body {
+        background-color: rgb(24, 24, 24);
+        height: 100%;
+        color: rgb(255, 255, 255);
+        font-family: InterBold;
+    }
+
+    .info-panel {
+        align-self: center;
+        width: 100%;
+        display: flex;
+    }
+
+    .timer {
+        text-align: center;
+        margin-left: 20px;
+        vertical-align: center;
+        font-family: FontDingerSwanky;
+    }
+
+    .answer-area {
+        text-align: center;
+        font-size: 4vw;
+        opacity: 80%;
+        font-family: InterBold;
+        align-self: center;
+        text-decoration: none;
+        width: 65%;
+        padding: 45px;
+        color: white;
+        font-family: InterBold;
+        font-size: 4vw;
+        background-color: #242424;
+        border: 1px solid #808080;
+        border-radius: 8px;
+    }
+
+    .answer-area::placeholder {
+        color: white;
+        opacity: 58%;
+    }
+
+    .question-area {
+        margin-top: 5%;
+        margin-bottom: 5%;
+        align-self: center;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background: black;
+        border: 2px dotted #FF13F0;
+        max-height: 30%;
+
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
+    .question-text {
+        text-align: center;
+        font-style: italic;
+        font-size: 6vw;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 80%;
+        font-family: InterBold;
+    }
+
+    .return-button {
+        height: fit-content;
+    }
+
+    .submit-button {
+        margin-top: 15%;
+        font-size: 4vw;
+        font-family: InterBold;
+        color: rgb(255, 255, 255);
+        width: 60%;
+        padding: 8px 2vh;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 10px;
+        background-color: rgb(39, 139, 254);
+        border: none;
+    }
+}

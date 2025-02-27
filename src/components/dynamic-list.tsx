@@ -55,8 +55,6 @@ export default function ListData({ type }: GameType) {
     }
 
     const navigate = useNavigate()
-
-    let tabName: string = "Category"
     let tabElement: JSX.Element[] = []
 
     if (type == "Category")
@@ -66,24 +64,18 @@ export default function ListData({ type }: GameType) {
                     saveCategory(theme);
                     navigate("/jeopardyGame");
                 }}>
-                    {theme}
-                </button>
+                    {theme}</button>
             </Link>
         );
     else
         if (type == "Tier") {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            tabName = ""
-
             if (tiers != undefined)
                 tabElement = tiers.map((tier, i) =>
-                    <Link className="tab-area" to={"/jeopardyGame"} key={i}>
+                    <Link className="tab-area" to={"/jeopardyGame-question"} key={i}>
                         <button className="main-tab" onClick={() => {
                             saveTier(tier.toString());
-                            navigate("/question");
                         }}>
-                            ${tier}
-                        </button>
+                            ${tier}</button>
                     </Link>
                 );
         }

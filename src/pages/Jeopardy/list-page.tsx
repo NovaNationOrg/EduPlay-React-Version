@@ -3,7 +3,6 @@ import "../../styles/Jeopardy/list-page.css"
 import Header from '../../components/header'
 import ListData from "../../components/dynamic-list";
 
-
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
