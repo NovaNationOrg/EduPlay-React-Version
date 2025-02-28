@@ -10,13 +10,22 @@ export default defineConfig({
     react(),
     VitePWA({ 
       manifest:{
-        icons:[{
-          src: "/android/android-launchericon-512-512.png",
-          sizes:"512x512",
-          type:"image/png",
-          purpose:"any maskable"
-        }],
-        theme_color:"#181818"
+        icons:[
+          {
+          "src": "/web-app-manifest-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/web-app-manifest-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable"
+        }
+      ],
+        theme_color:"#181818",
+        
 
 
       },
