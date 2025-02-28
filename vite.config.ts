@@ -9,7 +9,9 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({ 
+      injectRegister: 'script',
       manifest:{
+        
         icons:[
           {
           "src": "/web-app-manifest-192x192.png",
