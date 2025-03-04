@@ -33,19 +33,27 @@ export default defineConfig({
         enabled:true
       } ,
       workbox:{
-        runtimeCaching:[{
+        globPatterns: ['**/*.{js,ts,css,html,ico,png,svg,wasm,ttf}'],
+        
+        runtimeCaching:[
+          {
           urlPattern: ({ url }) => {
-              return url.pathname.startsWith("/src")
+              return url.pathname.startsWith("/npm/zxing-wasm@2.1.0/dist/reader/zxing_reader.wasm")
           },
           handler: "CacheFirst" as const,
-          options:{
-            cacheName: "general-cache",
+          options:{   
+            cacheName: "zxing-cache",
             cacheableResponse: {
               statuses: [0,200]
+            },
+            expiration:{
+              maxEntries:1,
             }
           }
-        }]
+        },
+        ]
       }
+
     }
     )
   ], resolve: {
