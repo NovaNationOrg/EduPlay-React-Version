@@ -27,9 +27,6 @@ export default defineConfig({
         }
       ],
         theme_color:"#181818",
-        
-
-
       },
       registerType: 'autoUpdate',
       devOptions:{
