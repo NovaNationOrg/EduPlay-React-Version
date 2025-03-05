@@ -48,15 +48,20 @@
         font-size: 14vw;
     }
 
+    .hud-section{
+        max-width: 100%;
+        display: flex;
+    }
     .score-label{
-        display: inline-block;
+        flex:1;
         font-family: InterBold;
         font-size: 4.5vw;
     }
     .return-button {
+        flex:1;
         margin-top: 5%;
         text-align: center;
-        margin-left: 68%;
+        margin-left: 62%;   
         margin-right: 10px;
         display: inline-block;
         font-family: InterBold;

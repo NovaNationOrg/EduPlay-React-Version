@@ -4,7 +4,6 @@ import "../../styles/Jeopardy/question-page.css";
 import { useState, useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../database/db";
-import { nav } from "motion/react-client";
 
 function pageReturn(navigate:NavigateFunction){
     removeTier()
@@ -54,6 +53,8 @@ function setAnswerStatus(status:string){
     const points = Number(sessionStorage.getItem("tier"))
     const category = sessionStorage.getItem("category")
     localStorage.setItem(category + "_" + points,status)
+
+    return status
 }
 
 export default function QuestionPage() {
@@ -62,12 +63,14 @@ export default function QuestionPage() {
 
     function submit() {
         const outcome = guess.toLocaleUpperCase("en-US")==answer.toLocaleUpperCase("en-US")
+        let status:string
         if(outcome)
-            setAnswerStatus("Correct")
+            status = setAnswerStatus("Correct")
         else
-            setAnswerStatus("Incorrect")
+            status = setAnswerStatus("Incorrect")
         updatescore(outcome)
         pageReturn(navigate)
+        sessionStorage.setItem("toastMessage",status)
     }
 
     const points = Number(sessionStorage.getItem("tier"))
