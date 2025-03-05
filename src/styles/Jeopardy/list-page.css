@@ -48,12 +48,17 @@
         font-size: 14vw;
     }
 
+    .score-label{
+        display: inline-block;
+        font-family: InterBold;
+        font-size: 4.5vw;
+    }
     .return-button {
         margin-top: 5%;
         text-align: center;
-        margin-left: auto;
+        margin-left: 68%;
         margin-right: 10px;
-        display: block;
+        display: inline-block;
         font-family: InterBold;
         font-size: 4.5vw;
         background-color: rgb(254, 39, 43);
@@ -61,5 +66,6 @@
         border-radius: 10px;
         color: white;
         min-width: 20%;
+        max-width: 20%;
     }
 }

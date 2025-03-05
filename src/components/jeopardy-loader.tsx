@@ -1,5 +1,5 @@
 // Qr Scanner
-import { addJeopardyGame, fetchJeopardyGame } from "../database/scripts/jeopardy-loading-func";
+import { addJeopardyGame } from "../database/scripts/jeopardy-loading-func";
 
 export default function loadJeopardy(gameData: string[]): boolean {
 
@@ -12,7 +12,7 @@ export default function loadJeopardy(gameData: string[]): boolean {
     if (gameData != undefined)
         sessionStorage.setItem("curr_game", gameData[1])
 
+    localStorage.setItem("score","0")
     addJeopardyGame(gameData)
-    fetchJeopardyGame(sessionStorage.getItem("curr_game")!)
     return true
 }

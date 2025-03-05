@@ -1,8 +1,6 @@
 import { MouseEventHandler, useState } from "react"
 import Header from "../components/header"
 import { Link } from "react-router-dom";
-import { db } from "../database/db";
-import { useLiveQuery } from "dexie-react-hooks";
 import "../styles/landing-page.css"
 import { RecentGamesList } from "../components/recent-games-list";
 
@@ -17,8 +15,6 @@ export default function LandingPage() {
         updateState(event.target.value);
     };
 
-    const list = useLiveQuery(() => db.jeopardyData.toArray())
-    console.log(list)
     return (
         <>
             <div className="panel">
