@@ -9,35 +9,51 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({ 
+      injectRegister: 'script',
       manifest:{
-        icons:[{
-          src: "/android/android-launchericon-512-512.png",
-          sizes:"512x512",
-          type:"image/png",
-          purpose:"any maskable"
-        }],
-        theme_color:"#181818"
-
-
+        
+        icons:[
+          {
+          "src": "/web-app-manifest-192x192.png",
+          "sizes": "192x192",
+          "type": "image/png",
+          "purpose": "maskable"
+        },
+        {
+          "src": "/web-app-manifest-512x512.png",
+          "sizes": "512x512",
+          "type": "image/png",
+          "purpose": "maskable"
+        }
+      ],
+        theme_color:"#181818",
       },
       registerType: 'autoUpdate',
       devOptions:{
         enabled:true
       } ,
       workbox:{
-        runtimeCaching:[{
+        globPatterns: ['**/*.{js,ts,css,html,ico,png,svg,wasm,ttf}'],
+        
+        runtimeCaching:[
+          {
           urlPattern: ({ url }) => {
-              return url.pathname.startsWith("/src")
+              return url.pathname.startsWith("/npm/zxing-wasm@2.1.0/dist/reader/zxing_reader.wasm")
           },
           handler: "CacheFirst" as const,
-          options:{
-            cacheName: "general-cache",
+          options:{   
+            cacheName: "zxing-cache",
             cacheableResponse: {
               statuses: [0,200]
+            },
+            expiration:{
+              maxEntries:1,
             }
           }
-        }]
+        },
+        ]
       }
+
     }
     )
   ], resolve: {
