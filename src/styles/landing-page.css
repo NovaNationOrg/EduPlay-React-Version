@@ -14,21 +14,24 @@
 
 
     .panel {
-        height: 100vh;
+        height: 97vh;
         width: 100%;
         display: flex;
         flex-direction: column;
     }
 
     .top-segment {
-        flex: 55;
+       height: 55%;
         border-bottom-width: 2px;
         border-bottom-color: white;
         border-bottom-style: solid;
     }
 
     .bottom-segment {
-        flex: 45;
+        height: 45%;
+        width: 100%;
+        align-self: flex-start; /* Prevents this item from growing */
+
     }
 
 
