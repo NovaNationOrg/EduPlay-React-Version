@@ -9,7 +9,7 @@ export function RecentGameCard({cardClass,game_id,title_date}:RecentGameProps){
     return(
         <div className = "recent-game-container">
             <div className={`card-type-${cardClass}`} key={game_id}>
-                {title_date.getFullYear()}
+                {`Game : ${title_date.toLocaleDateString("en-GB")}`}
             </div>
         </div>
     )
