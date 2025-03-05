@@ -26,7 +26,9 @@ export default function ListPage() {
                             navigate("/")
                         }}>QUIT</button>
                         <header className="heading-text">Select a Category</header>
+                        <div className = "jeopardy-scroll-container">
                         <ListData type="Category" />
+                        </div>
                     </>
                 ) : (
                     <>
@@ -36,10 +38,11 @@ export default function ListPage() {
                             removeCategory()
                         }}>QUIT</button>
                         <header className="heading-text">Select a Tier</header>
+                        <div className = "jeopardy-scroll-container">
                         <ListData type="Tier" />
+                        </div>
                     </>
                 )}
-
             </div >
         </>
     )
