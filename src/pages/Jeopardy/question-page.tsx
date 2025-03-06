@@ -4,6 +4,7 @@ import "../../styles/Jeopardy/question-page.css";
 import { useState, useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../database/db";
+import { toast, ToastContainer } from "react-toastify";
 
 function pageReturn(navigate:NavigateFunction){
     removeTier()
@@ -62,6 +63,11 @@ export default function QuestionPage() {
     const navigate = useNavigate()
 
     function submit() {
+        if(guess==""){
+            toast.info("Please enter text into the answer field before sumbitting",{toastId:"info-toast",theme:"dark"})
+            return
+        }
+        
         const outcome = guess.toLocaleUpperCase("en-US")==answer.toLocaleUpperCase("en-US")
         let status:string
         if(outcome)
@@ -87,7 +93,8 @@ export default function QuestionPage() {
     return (
         <>
             <div className="panel">
-                <Header gameClass="hangman-header" headerText="Jeopardy" />
+                <ToastContainer/>
+                <Header gameClass="jeopardy-header" headerText="Jeopardy" />
                 <div className="info-panel">
                     <p className="timer"><CountdownTimer /></p>
                     <button className="return-button" onClick={() => {

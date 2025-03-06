@@ -20,7 +20,7 @@ export default function LandingPage() {
             <div className="panel">
                 <div className="top-segment">
                     <div className="landing-body">
-                        <Header gameClass="jeopardy-header" headerText="EduPlay" />
+                        <Header gameClass="eduplay-header" headerText="EduPlay" />
                         <div className="formArea">
                             <div className="textbox-heading">
                                 <div className="name-label"><p>Name</p></div>

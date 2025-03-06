@@ -4,7 +4,8 @@ import Header from '../../components/header'
 import ListData from "../../components/dynamic-list";
 import { ToastContainer, toast} from 'react-toastify';
 import { useEffect } from "react";
-
+import { db } from "../../database/db";
+import { useLiveQuery } from "dexie-react-hooks";
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
@@ -13,17 +14,45 @@ function removeTier() {
     sessionStorage.removeItem("tier")
 }
 
-export function outputToast(message:string){
+function outputToast(message:string){
     if(message=="Correct")
         toast.success(message)
     else
         toast.error(message)
 }
 
+function completedGameLoop(){
+    const game_id= sessionStorage.getItem("curr_game")
+    const navigate = useNavigate()
+    const gameData = useLiveQuery(()=> db.jeopardyData
+                                .where("game_id")
+                                .equals(game_id!)
+                                .toArray())
+    if(gameData == null)
+        return false
+    
+    for(let i=0;i<gameData.length;i++){
+        if(localStorage.getItem(gameData[i].theme + "_" + gameData[i].points) == null)
+            return false
+    }
+
+    let resultsData = [0,0]
+    for(let i=0;i<gameData.length;i++){
+        const themeQuestion = localStorage.getItem(gameData[i].theme + "_" + gameData[i].points)
+        if(themeQuestion == "Correct")
+            resultsData[0]+=1
+        else
+            resultsData[1]+=1
+    }
+    navigate("/jeopardyGame/results",{state:resultsData})
+
+}
+
 export default function ListPage() {
     const navigate = useNavigate()
     const score = localStorage.getItem("score")
     const toastMessage = sessionStorage.getItem("toastMessage")
+    completedGameLoop()
     useEffect(() =>{
         if(toastMessage!=null){
             outputToast(toastMessage)
@@ -34,7 +63,7 @@ export default function ListPage() {
     return (
         <>
             <div className="panel">
-                <Header gameClass="hangman-header" headerText="Jeopardy" />
+                <Header gameClass="jeopardy-header" headerText="Jeopardy" />
                 <ToastContainer />
 
                 {sessionStorage.getItem("category") == null ? (
