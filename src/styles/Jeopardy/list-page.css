@@ -27,6 +27,20 @@
         margin-bottom: 5%;
     }
 
+    .main-tab-completed {
+        align-self: center;
+        width: 100%;
+        display: block;
+        background-color: black;
+        color: white;
+        font-family: Jersey15;
+        font-size: 11vw;
+        padding: 20px;
+        border: 2px dotted #FF13F0;
+        margin-bottom: 5%;
+        opacity: 0.35;
+    }
+
     .tab-area {
         margin-top: 10%;
         margin-bottom: 5%;
