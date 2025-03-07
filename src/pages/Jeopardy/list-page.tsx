@@ -49,7 +49,7 @@ function completedGameLoop(){
     }
     const curr_game = sessionStorage.getItem("curr_game")
     if(curr_game!=null){
-        addGameResult(sessionStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")))
+        addGameResult(sessionStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
         sessionStorage.removeItem("curr_game")
     }
     navigate("/jeopardyGame/results",{state:resultsData})

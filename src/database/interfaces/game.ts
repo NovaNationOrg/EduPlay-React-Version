@@ -7,6 +7,7 @@ export interface Game{
 
 export interface GameResults{
     id:number
+    game_code:string
     game_id:string
     correct:number
     incorrect:number
