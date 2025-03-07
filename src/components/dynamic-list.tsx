@@ -1,7 +1,7 @@
 import { useLiveQuery } from "dexie-react-hooks"
 import { db } from "../database/db"
 import { Link, useNavigate } from "react-router-dom"
-import { JSX, MouseEventHandler, useEffect, useState } from "react"
+import { JSX, MouseEventHandler } from "react"
 import { toast } from "react-toastify"
 
 type GameType = {

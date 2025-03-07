@@ -6,6 +6,7 @@ import { ToastContainer, toast} from 'react-toastify';
 import { useEffect } from "react";
 import { db } from "../../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
+import { addGameResult } from "../../database/scripts/game-result";
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
@@ -43,6 +44,11 @@ function completedGameLoop(){
             resultsData[0]+=1
         else
             resultsData[1]+=1
+    }
+    const curr_game = sessionStorage.getItem("curr_game")
+    if(curr_game!=null){
+        addGameResult(sessionStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")))
+        sessionStorage.removeItem("curr_game")
     }
     navigate("/jeopardyGame/results",{state:resultsData})
 

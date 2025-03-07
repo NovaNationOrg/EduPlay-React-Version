@@ -3,6 +3,9 @@ import Header from "../../components/header"
 import "../../styles/Jeopardy/results-page.css"
 
 
+function clearGameData(){
+    localStorage.clear()
+}
 export default function ResultsPage(){     
 
     const location = useLocation()
@@ -16,7 +19,7 @@ export default function ResultsPage(){
                 <p className="score-text">Score: ${points}</p>
                 <p className="correct-text">Correct: {data[0]}</p>
                 <p className="incorrect-text">Incorrect: {data[1]}</p>
-                <Link className= "home-button-container" to={"/"} ><button className="home-button">Back to Home</button></Link>
+                <Link className= "home-button-container" to={"/"} ><button onClick = {()=> clearGameData()}className="home-button">Back to Home</button></Link>
                 
             </div>
         </>
