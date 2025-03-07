@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-3ddb0163'], (function (workbox) { 'use strict';
+define(['./workbox-0bd21846'], (function (workbox) { 'use strict';
 
   self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') {
@@ -85,7 +85,7 @@ define(['./workbox-3ddb0163'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
-    "revision": "0.4ut9dt8pvn"
+    "revision": "0.t8e3cei1ujg"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
@@ -94,11 +94,13 @@ define(['./workbox-3ddb0163'], (function (workbox) { 'use strict';
   workbox.registerRoute(({
     url
   }) => {
-    return url.pathname.startsWith("/src");
+    return url.pathname.startsWith("/npm/zxing-wasm@2.1.0/dist/reader/zxing_reader.wasm");
   }, new workbox.CacheFirst({
-    "cacheName": "general-cache",
+    "cacheName": "zxing-cache",
     plugins: [new workbox.CacheableResponsePlugin({
       statuses: [0, 200]
+    }), new workbox.ExpirationPlugin({
+      maxEntries: 1
     })]
   }), 'GET');
 
