@@ -24,12 +24,14 @@ function outputToast(message:string){
 
 function completedGameLoop(){
     const game_id= sessionStorage.getItem("curr_game")
+    if(game_id== null)
+        return
     const navigate = useNavigate()
     const gameData = useLiveQuery(()=> db.jeopardyData
                                 .where("game_id")
-                                .equals(game_id!)
+                                .equals(game_id)
                                 .toArray())
-    if(gameData == null)
+    if(gameData == undefined || gameData.length==0)
         return false
     
     for(let i=0;i<gameData.length;i++){
