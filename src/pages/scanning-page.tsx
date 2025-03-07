@@ -14,7 +14,7 @@ export default function ScanningPage(){
         <>   
             <div className="panel">
                 <div>
-                        <Header gameClass = "jeopardy-header" headerText="EduPlay"/>
+                        <Header gameClass = "eduplay-header" headerText="EduPlay"/>
                         <div className="scanner-container">
                         <p className="scanner-header-text">Scan Code</p>
                             <Scanner components={qrComponents} onScan={(result) => updateQrData(result[0].rawValue)}/>
