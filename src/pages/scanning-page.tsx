@@ -13,7 +13,7 @@ export default function ScanningPage(){
     return(
         <>   
             <div className="panel">
-                <div className="top-segment">
+                <div>
                         <Header gameClass = "jeopardy-header" headerText="EduPlay"/>
                         <div className="scanner-container">
                         <p className="scanner-header-text">Scan Code</p>

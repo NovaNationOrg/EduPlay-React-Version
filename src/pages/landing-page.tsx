@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { db } from "../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import "../styles/landing-page.css"
+import { RecentGamesList } from "../components/recent-games-list";
 
 function saveName(name: string): MouseEventHandler<HTMLButtonElement> | void {
     sessionStorage.setItem("username", name)
@@ -41,7 +42,9 @@ export default function LandingPage() {
                     <div className="upper-recent-section">
                         <div className="recentLabel">Recent Games</div>
                         <input type="button" value={"view all"} className="view-all-button" ></input>
+                        
                     </div>
+                    <RecentGamesList />
                 </div>
             </div>
         </>
