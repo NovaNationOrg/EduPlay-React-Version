@@ -12,7 +12,7 @@ const db = new Dexie('EduPlayDB') as Dexie & {
 
 db.version(1).stores({
     gameList: '++gameNum,game_code,game_id,date',
-    jeopardyData: '++id,game_id,theme,question,answer,points,[points+theme]',
+    jeopardyData: '++id,game_id,theme,question,answer,points,[game_id+points+theme]',
     gameResults: "++id,game_id,[game_id+correct],[game_id+incorrect],[game_id+date],score"
 })
 

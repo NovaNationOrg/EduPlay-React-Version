@@ -23,7 +23,7 @@ function outputToast(message:string){
 }
 
 function completedGameLoop(){
-    const game_id= sessionStorage.getItem("curr_game")
+    const game_id= localStorage.getItem("curr_game")
     if(game_id== null)
         return
     const navigate = useNavigate()
@@ -47,10 +47,10 @@ function completedGameLoop(){
         else
             resultsData[1]+=1
     }
-    const curr_game = sessionStorage.getItem("curr_game")
+    const curr_game = localStorage.getItem("curr_game")
     if(curr_game!=null){
-        addGameResult(sessionStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
-        sessionStorage.removeItem("curr_game")
+        addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
+        localStorage.removeItem("curr_game")
     }
     navigate("/jeopardyGame/results",{state:resultsData})
 

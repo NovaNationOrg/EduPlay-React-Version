@@ -21,7 +21,7 @@ export function RecentGameCard({cardClass,game_id,title_date,correct,incorrect,s
 function setupGame(){
     localStorage.clear()
     localStorage.setItem("score","0")
-    sessionStorage.setItem("curr_game",game_id)
+    localStorage.setItem("curr_game",game_id)
 }
 const reviewOpen = () => setModalState(true);
 const reviewClose = () => setModalState(false);
