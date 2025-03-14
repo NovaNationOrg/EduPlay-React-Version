@@ -1,8 +1,7 @@
 import loadJeopardy from "./components/jeopardy-loader";
 
-export function gameSelector(gameData:string){
+export function gameSelector(gameFound:boolean, splitData:string[]){
 
-    const splitData = gameData.split("\n")
     if(splitData[0]=="_jp_")
-        loadJeopardy(splitData)
+        loadJeopardy(splitData,gameFound)
 }   

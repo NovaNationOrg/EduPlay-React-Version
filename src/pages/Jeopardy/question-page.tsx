@@ -82,7 +82,7 @@ export default function QuestionPage() {
     const points = Number(sessionStorage.getItem("tier"))
     const category = sessionStorage.getItem("category")
     const jeopardyGameData = useLiveQuery(() => db.jeopardyData
-        .where({ points: points, theme: category }).toArray())
+        .where({ game_id: localStorage.getItem("curr_game"),points: points, theme: category}).toArray())
 
     if(jeopardyGameData==null)
         return

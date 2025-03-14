@@ -18,7 +18,7 @@ function saveTier(tier: string): MouseEventHandler<HTMLButtonElement> | void {
 
 function loadCategory() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where('game_id').equals(sessionStorage.getItem("curr_game")!).toArray())
+    const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where('game_id').equals(localStorage.getItem("curr_game")!).toArray())
     const themes = [...new Set(jeopardyGameData?.map((record) => (record.theme)))]
 
     for(let i=0;i < themes.length;i++){
