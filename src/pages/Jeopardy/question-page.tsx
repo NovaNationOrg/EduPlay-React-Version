@@ -28,6 +28,7 @@ const CountdownTimer = () => {
             setAnswerStatus("Incorrect")
             updatescore(false)
             pageReturn(navigate)
+            sessionStorage.setItem("toastMessage","You ran out of time!")
             return;
         }
            
