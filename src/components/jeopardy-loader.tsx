@@ -12,7 +12,7 @@ export default function loadJeopardy(gameData: string[],gameFound:boolean): bool
         //Alert of invalid gameCode
     }
     
-    const game_id = gameData[1]
+    const game_id = gameData[1].substring(0,gameData[1].indexOf(":"))
     if(!gameFound){
         initializeStorage(game_id)
         addJeopardyGame(gameData)
