@@ -6,7 +6,8 @@ import { useEffect,useState } from "react"
 import "../styles/scanning-page.css"
 import { gameSelector } from "../game-selector"
 import { db } from "../database/db"
-
+// import { toast, ToastContainer, Zoom } from "react-toastify"
+import { toast, Toaster } from "sonner"
 
 async function gameExists(game_id:string){
     const gameData = await db.gameList.where("game_id").equals(game_id).toArray()
@@ -21,7 +22,7 @@ function validGame(game_code:string){
 }
 
 function validPage(pageNum:string){
-    if(Number(pageNum) != Number(sessionStorage.getItem("current_page")) + 1 && Number(pageNum) < Number(sessionStorage.getItem("total_pages")))
+    if(Number(pageNum) != Number(sessionStorage.getItem("current_page")) + 1 || Number(pageNum) < Number(sessionStorage.getItem("total_pages")))
         return false
     return true
 }
@@ -41,6 +42,21 @@ function validPayload(payload:string[]){
     
 }
 export default function ScanningPage(){
+    function notifyUser(pageNum:number){  
+        if(Number(pageNum ==0))
+            return
+        
+        toast("initial",{
+            id:"qrnum-toast", duration:Infinity, position:"top-center",
+            cancel: { label: "Reset", key:"reset-button", onClick: () =>{ resetScanningProcess() }}
+        })
+
+        if(pageNum == Number(sessionStorage.getItem("total_pages")) || pageNum == -2)
+            toast.success("Game successfully loaded. Press begin to continue",{id:"qrnum-toast"})
+        else
+            toast("QR Code: " + pageNum + " | " + sessionStorage.getItem("total_pages"),{id:"qrnum-toast"})  
+    }
+
     const [qrData,updateQrData] = useState("")
     const[gameFound,updateFoundStatus] = useState(false)
     const[startProgress,updateStartProgress] = useState(-1)
@@ -54,14 +70,25 @@ export default function ScanningPage(){
     const fetchData = async () => {
         const status = await gameExists(game_id);
         updateFoundStatus(status);
-        if(status)
+        if(status){
             updateReadyStatus(true)
+            notifyUser(-2)
+        }
     };
+
+    function resetScanningProcess() {
+        sessionStorage.clear()
+        sessionStorage.setItem("current_page","0")
+        updateStartProgress(-1)
+        updateReadyStatus(false)
+    }
     
     useEffect(()=>{
     
         fetchData()
         updateStartProgress((startProgress + 1))
+        if(startProgress > -1)
+            notifyUser(startProgress+1)
         sessionStorage.setItem("current_page",(startProgress + 1).toString())
      },[qrData])
 
@@ -97,6 +124,7 @@ export default function ScanningPage(){
      }
     return(
         <>   
+        <Toaster closeButton richColors/>
             <div className="panel">
                 <div>
                         <Header gameClass = "eduplay-header" headerText="EduPlay"/>
@@ -111,7 +139,6 @@ export default function ScanningPage(){
                                         onClick={() => {
                                                     gameSelector(gameFound,splitData)
                                                 }}>Begin</button></Link>
-                     
                         }
                 </div>
             </div> 
