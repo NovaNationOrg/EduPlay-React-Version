@@ -1,9 +1,14 @@
 @font-face {
-    font-family: FontDingerSwanky;
-    src: url("./fonts/FontdinerSwanky-Regular.ttf");
-  }
+  font-family: FontDingerSwanky;
+  src: url("./fonts/FontdinerSwanky-Regular.ttf");
+}
 
 @font-face {
-    font-family: InterBold;
-    src: url("./fonts/Inter_18pt-Bold.ttf");
-  }
+  font-family: InterBold;
+  src: url("./fonts/Inter_18pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: Jersey15;
+  src: url("./fonts/Jersey15-Regular.ttf");
+}

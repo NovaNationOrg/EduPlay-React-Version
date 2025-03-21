@@ -1,31 +1,24 @@
 import './App.css'
-import Header from './components/header'
-import  LandingPage  from './pages/landing-page'
+// import Header from './components/header'
+import LandingPage from './pages/landing-page'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import "./styles/fonts.css"
+import jeopardyRoutes from './routes/jeopardy-routes'
 import ScanningPage from './pages/scanning-page'
 
 
 function App() {
   return (
     <>
-
       <BrowserRouter>
         <Routes>
-          <Route path = "/" >
-            <Route index element={<LandingPage/>}/>
-            {/* <Route path = "header" element={<Header gameClass='hangman-header' headerText={'Yes'} />}/> */}
-            <Route path = "gameScan" element={<ScanningPage/>}/>
-            <Route path = "jeopardyGame" element={<Header gameClass='hangman-header'  headerText='Yow'/>}/>
-
+          <Route path="/" >
+            <Route index element={<LandingPage />} />
+            <Route path="gameScan" element={<ScanningPage />} />,
+            {jeopardyRoutes}
           </Route>
         </Routes>
       </BrowserRouter>
-
-      
-
-      
-      
     </>
   )
 }
