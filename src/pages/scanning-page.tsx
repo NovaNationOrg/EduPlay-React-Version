@@ -42,9 +42,9 @@ function validPayload(payload:string[]){
 }
 export default function ScanningPage(){
     const [qrData,updateQrData] = useState("")
-    const[gameFound,updateGameStatus] = useState(false)
+    const[gameFound,updateFoundStatus] = useState(false)
     const[startProgress,updateStartProgress] = useState(-1)
-    //TODO: Continue and complete the feature.
+    const[readyStatus,updateReadyStatus] = useState(false)
     const splitData = qrData.split("\n")
 
     let game_id: string|null  = sessionStorage.getItem("game_id")
@@ -53,7 +53,9 @@ export default function ScanningPage(){
 
     const fetchData = async () => {
         const status = await gameExists(game_id);
-        updateGameStatus(status);
+        updateFoundStatus(status);
+        if(status)
+            updateReadyStatus(true)
     };
     
     useEffect(()=>{
@@ -61,13 +63,12 @@ export default function ScanningPage(){
         fetchData()
         updateStartProgress((startProgress + 1))
         sessionStorage.setItem("current_page",(startProgress + 1).toString())
-
-
      },[qrData])
 
      useEffect(() =>{
-        if(startProgress == Number(sessionStorage.getItem("total_pages")))
-            updateGameStatus(true)     
+        const numPages = Number(sessionStorage.getItem("total_pages"))
+        if(numPages > 0 && startProgress == numPages )
+            updateReadyStatus(true)     
      },[startProgress])
 
      const handleQrUpdate = (result:string) =>{
@@ -79,13 +80,14 @@ export default function ScanningPage(){
         let newString = sessionStorage.getItem("data-payload")
         if(newString!=null){
             const modifiedResult = (splitData.slice(2,splitData.length)).join("\n")
-            newString += "\n" + modifiedResult
+            newString +=  modifiedResult
 
         }
         else{ //This condition exists for when qrCode 1 | max is being read
-            newString = result
             sessionStorage.setItem("game_id",splitData[1].substring(0,splitData[1].indexOf(":")))
             sessionStorage.setItem("total_pages",splitData[1].substring(splitData[1].lastIndexOf('|') + 1,splitData[1].lastIndexOf('|')+2))
+            splitData[1] = splitData[1].substring(0,splitData[1].indexOf(":"))
+            newString = splitData.join("\n")
         }
 
         if(newString!=""){
@@ -103,7 +105,7 @@ export default function ScanningPage(){
                             <Scanner components={qrComponents} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
                         </div>
                         {
-                            gameFound ==true && 
+                            readyStatus == true  && 
                                 <Link className="join-area" to={"/jeopardyGame"}>
                                     <button className="join-button" 
                                         onClick={() => {
