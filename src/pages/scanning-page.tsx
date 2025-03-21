@@ -80,7 +80,9 @@ export default function ScanningPage(){
         sessionStorage.clear()
         sessionStorage.setItem("current_page","0")
         updateStartProgress(-1)
+        updateQrData("")
         updateReadyStatus(false)
+        updateFoundStatus(false)
     }
     
     useEffect(()=>{
