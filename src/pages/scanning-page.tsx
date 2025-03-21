@@ -22,7 +22,7 @@ function validGame(game_code:string){
 }
 
 function validPage(pageNum:string){
-    if(Number(pageNum) != Number(sessionStorage.getItem("current_page")) + 1 || Number(pageNum) < Number(sessionStorage.getItem("total_pages")))
+    if(Number(pageNum) != Number(sessionStorage.getItem("current_page")) + 1 )
         return false
     return true
 }
