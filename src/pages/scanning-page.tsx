@@ -6,7 +6,6 @@ import { useEffect,useState } from "react"
 import "../styles/scanning-page.css"
 import { gameSelector } from "../game-selector"
 import { db } from "../database/db"
-// import { toast, ToastContainer, Zoom } from "react-toastify"
 import { toast, Toaster } from "sonner"
 
 async function gameExists(game_id:string){

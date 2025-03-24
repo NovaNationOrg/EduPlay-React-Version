@@ -2,7 +2,7 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { db } from "../database/db"
 import { Link, useNavigate } from "react-router-dom"
 import { JSX, MouseEventHandler } from "react"
-import { toast } from "react-toastify"
+import { toast } from "sonner"
 
 type GameType = {
     type: string
@@ -17,7 +17,6 @@ function saveTier(tier: string): MouseEventHandler<HTMLButtonElement> | void {
 }
 
 function loadCategory() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where('game_id').equals(localStorage.getItem("curr_game")!).toArray())
     const themes = [...new Set(jeopardyGameData?.map((record) => (record.theme)))]
 
@@ -31,7 +30,6 @@ function loadTier() {
     const selectedCategory = sessionStorage.getItem("category")
 
     if (selectedCategory != null) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where("theme").equals(selectedCategory).toArray())
         const tiers = [...new Set(jeopardyGameData?.map(record => record.points))]
 
@@ -85,7 +83,7 @@ function setupComponents(type:string){
         }).map((category) =>
             <div className = "tab-area" key={category.substring(category.length-1,category.length)}>
                 <button className="main-tab-completed" onClick={() => {
-                    alertCompleted("category")
+                    toast.info("This category has already been completed",{id:"completed-toast"})
                 }}>
                     {category.substring(0,category.length-1)}</button>
             </div>
@@ -115,7 +113,7 @@ function setupComponents(type:string){
                 }).map((tier) => 
                     <div className="tab-area" key={tier}>
                     <button className="main-tab-completed" onClick={() => {
-                        alertCompleted("question");
+                        toast.info("This question has already been completed",{id:"completed-toast"})
                     }}>
                         ${tier}</button>
                     </div>
@@ -180,9 +178,3 @@ export default function ListData({ type }: GameType) {
     )
 }
 
-function alertCompleted(type:string) {
-    toast.info("This " + type + " has already been completed",{
-        toastId:"completed-toast",
-        theme: "dark"}
-    )
-}

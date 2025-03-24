@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/Jeopardy/list-page.css"
 import Header from '../../components/header'
 import ListData from "../../components/dynamic-list";
-import { ToastContainer, toast} from 'react-toastify';
 import { useEffect } from "react";
 import { db } from "../../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { addGameResult } from "../../database/scripts/game-result";
+import { Toaster,toast } from "sonner";
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
@@ -72,7 +72,7 @@ export default function ListPage() {
         <>
             <div className="panel">
                 <Header gameClass="jeopardy-header" headerText="Jeopardy" />
-                <ToastContainer />
+                <Toaster richColors position="top-center" />
 
                 {sessionStorage.getItem("category") == null ? (
                     <>
