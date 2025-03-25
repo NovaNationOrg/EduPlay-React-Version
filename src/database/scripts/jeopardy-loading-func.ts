@@ -1,4 +1,3 @@
-import { useLiveQuery } from "dexie-react-hooks"
 import { db } from "../db"
 
 export async function addJeopardyGame(jeopardyContent: string[] | undefined) {
@@ -32,18 +31,4 @@ export async function addJeopardyGame(jeopardyContent: string[] | undefined) {
     }
 }
 
-export function fetchJeopardyGame(game_id: string) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const gameData = useLiveQuery(
-        async () => {
-            const gameData = await db.jeopardyData
-                .where('game_id')
-                .equals(game_id)
-                .toArray()
-
-            return gameData
-        }, [game_id]
-    )
-    return gameData
-}
 
