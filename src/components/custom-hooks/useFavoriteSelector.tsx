@@ -19,7 +19,7 @@ export function useDeviceHandler(){
 
     function setDeviceInfo(id:string,index:number){
         setDeviceId(id)
-        setDeviceNum((value)=>index+1)
+        setDeviceNum(index+1)
     }
 
         let selectedDevice: JSX.Element[] = []
