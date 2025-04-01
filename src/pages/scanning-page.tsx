@@ -7,6 +7,7 @@ import "../styles/scanning-page.css"
 import { gameSelector } from "../game-selector"
 import { db } from "../database/db"
 import { toast, Toaster } from "sonner"
+import {useDeviceHandler}  from "../components/custom-hooks/useFavoriteSelector"
 
 async function gameExists(game_id:string){
     const gameData = await db.gameList.where("game_id").equals(game_id).toArray()
@@ -123,16 +124,30 @@ export default function ScanningPage(){
             sessionStorage.setItem("data-payload",newString!)
         }
      }
+     
+
+    const {deviceListing, setFavoriteDevice, setDeviceInfo, isFavorite, deviceId} = useDeviceHandler()
+    
     return(
         <>   
-        <Toaster closeButton richColors/>
+        <Toaster position="top-center" richColors/>
             <div className="panel">
                 <div>
                         <Header gameClass = "eduplay-header" headerText="EduPlay"/>
                         <div className="scanner-container">
                         <p className="scanner-header-text">Scan Code</p>
-                            <Scanner components={qrComponents} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
+                            <Scanner components={qrComponents} constraints={{deviceId: deviceId }} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
+                            <div className="device-config-area">
+                        <select className = "device-listing" onChange={(e) => setDeviceInfo(e.target.value,e.target.selectedIndex-1)}>
+                            <option disabled value={undefined} style={{color:"white"}}>Select a device</option>
+                            {deviceListing}
+                        </select>
+                        { isFavorite != true &&
+                            <button className="favorite-button" onClick={setFavoriteDevice}>Set Favorite Camera</button>
+                        }
                         </div>
+                        </div>
+                        
                         {
                             readyStatus == true  && 
                                 <Link className="join-area" to={"/jeopardyGame"}>
