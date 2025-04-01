@@ -126,8 +126,7 @@ export default function ScanningPage(){
      }
      
 
-    const {deviceListing, setFavoriteDevice, setDeviceInfo, isFavorite, deviceId} = useDeviceHandler()
-    
+    const {deviceListing, setFavoriteDevice, setDeviceInfo, deviceId,deviceNum} = useDeviceHandler()
     return(
         <>   
         <Toaster position="top-center" richColors/>
@@ -142,7 +141,7 @@ export default function ScanningPage(){
                             <option disabled value={undefined} style={{color:"white"}}>Select a device</option>
                             {deviceListing}
                         </select>
-                        { isFavorite != true &&
+                        { deviceNum != Number(localStorage.getItem("favorite_device")) &&
                             <button className="favorite-button" onClick={setFavoriteDevice}>Set Favorite Camera</button>
                         }
                         </div>
