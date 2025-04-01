@@ -2,6 +2,7 @@ import "../styles/recent-games.css"
 import { useState } from 'react';
 import Modal from './modal';
 import { Link } from "react-router-dom";
+import { resetStorage } from "./game-resetter";
 
 
 
@@ -19,7 +20,7 @@ export function RecentGameCard({cardClass,game_id,title_date,correct,incorrect,s
     const [reviewModalOpen, setModalState] = useState(false)
 
 function setupGame(){
-    localStorage.clear()
+    resetStorage()
     localStorage.setItem("score","0")
     localStorage.setItem("curr_game",game_id)
 }
