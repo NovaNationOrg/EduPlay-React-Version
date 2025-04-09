@@ -2,139 +2,138 @@
 /* @import url("./fonts.css"); */
 
 
-@media only screen and (max-device-width: 1000px) {
-
-    body {
-        background-color: rgb(24, 24, 24);
-        height: 100%;
-        color: rgb(255, 255, 255);
-        font-family: InterBold;
-    }
 
 
-
-    .panel {
-        height: 97vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .top-segment {
-       height: 55%;
-        border-bottom-width: 2px;
-        border-bottom-color: white;
-        border-bottom-style: solid;
-    }
-
-    .bottom-segment {
-        height: 45%;
-        width: 100%;
-        align-self: flex-start; /* Prevents this item from growing */
-
-    }
+body {
+    background-color: rgb(24, 24, 24);
+    height: 100%;
+    color: rgb(255, 255, 255);
+    font-family: InterBold;
+}
 
 
-    .upper-recent-section {
-        display: flex;
-        flex-direction: row;
-        font-family: InterBold;
-    }
 
-    .formArea {
-        margin-top: 15%;
-        position: relative;
+.panel {
+    height: 97vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-    }
+.top-segment {
+    height: 55%;
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    border-bottom-style: solid;
+}
 
-    .recentLabel {
-        font-size: 18px;
-        flex: 4;
-        margin-top: 15px;
-        margin-left: 10px;
-    }
-
-    .view-all-button {
-        margin-right: 10px;
-        background-color: rgb(44, 44, 44);
-        border-radius: 10px;
-        border-style: none;
-        font-size: 16px;
-        font-family: InterBold;
-        color: rgb(255, 255, 255);
-        margin-top: 3%;
-        flex: 1;
-    }
-
-    .join-textbox {
-        padding-left: 12px;
-        padding-top: 6px;
-        padding-bottom: 4px;
-        border-radius: 5px;
-        border-style: solid;
-        font-size: 18px;
-        background-color: rgb(36, 36, 36);
-        color: rgb(163, 163, 163);
-        margin-top: 22px;
-        position: absolute;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 5px;
-        width: 85%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-    }
-
-    .name-label {
-        display: inline-flex;
-        flex: 1;
-        margin-bottom: 5px;
-        margin-left: 35px;
-
-
-    }
-
-    #reader {
-        max-width: 300px;
-
-    }
-
-    .character-countdown {
-        display: inline-flex;
-        flex: 1;
-        margin-left: 63%;
-        margin-bottom: 5px;
-    }
-
-    .textbox-heading {
-        display: flex;
-        flex: row;
-    }
-
-    .join-button {
-        margin-top: 70px;
-        font-size: 16px;
-        font-family: InterBold;
-        color: rgb(255, 255, 255);
-        width: 100%;
-        padding: 8px 2vh;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        border-radius: 14px;
-        background-color: rgb(39, 139, 254);
-    }
-
-    .join-area {
-        margin-top: 50px;
-        margin-left: 0;
-        align-self: center;
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        text-decoration: none;
-    }
+.bottom-segment {
+    height: 45%;
+    width: 100%;
+    align-self: flex-start; /* Prevents this item from growing */
 
 }
+
+
+.upper-recent-section {
+    display: flex;
+    flex-direction: row;
+    font-family: InterBold;
+}
+
+.formArea {
+    margin-top: 15%;
+    position: relative;
+
+}
+
+.recentLabel {
+    font-size: 18px;
+    flex: 4;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+.view-all-button {
+    margin-right: 10px;
+    background-color: rgb(44, 44, 44);
+    border-radius: 10px;
+    border-style: none;
+    font-size: 16px;
+    font-family: InterBold;
+    color: rgb(255, 255, 255);
+    margin-top: 3%;
+    flex: 1;
+}
+
+.join-textbox {
+    padding-left: 12px;
+    padding-top: 6px;
+    padding-bottom: 4px;
+    border-radius: 5px;
+    border-style: solid;
+    font-size: 18px;
+    background-color: rgb(36, 36, 36);
+    color: rgb(163, 163, 163);
+    margin-top: 22px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    width: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.name-label {
+    display: inline-flex;
+    flex: 1;
+    margin-bottom: 5px;
+    margin-left: 35px;
+
+
+}
+
+#reader {
+    max-width: 300px;
+
+}
+
+.character-countdown {
+    display: inline-flex;
+    flex: 1;
+    margin-left: 63%;
+    margin-bottom: 5px;
+}
+
+.textbox-heading {
+    display: flex;
+    flex: row;
+}
+
+.join-button {
+    margin-top: 70px;
+    font-size: 16px;
+    font-family: InterBold;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    padding: 8px 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 14px;
+    background-color: rgb(39, 139, 254);
+}
+
+.join-area {
+    margin-top: 50px;
+    margin-left: 0;
+    align-self: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-decoration: none;
+}
+

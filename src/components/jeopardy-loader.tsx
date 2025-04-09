@@ -1,8 +1,9 @@
 // Qr Scanner
 import { addJeopardyGame } from "../database/scripts/jeopardy-loading-func";
+import { resetStorage } from "./game-resetter";
 
 function initializeStorage(game_id:string){
-    localStorage.clear()
+    resetStorage()
     localStorage.setItem("curr_game", game_id)
     localStorage.setItem("score","0")
 }

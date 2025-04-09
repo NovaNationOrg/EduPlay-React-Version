@@ -3,6 +3,7 @@ import { db } from "../database/db"
 import { Link, useNavigate } from "react-router-dom"
 import { JSX, MouseEventHandler } from "react"
 import { toast } from "sonner"
+import { combineElements } from "./element-merger"
 
 type GameType = {
     type: string
@@ -74,7 +75,7 @@ function setupComponents(type:string){
     const navigate = useNavigate()
     let tabElement: JSX.Element[] = []
     let testElement: JSX.Element[] = []
-    let listELement: JSX.Element[] = []
+    let listElement: JSX.Element[] = []
     if (type == "Category"){
 
         testElement = themes.filter((category) =>{
@@ -135,37 +136,9 @@ function setupComponents(type:string){
             }
             
         }
-    let x =0,y = 0
-    let inRange = x <= testElement.length && y <= tabElement.length
-    while(inRange){
-
-        if(x==testElement.length && y == tabElement.length)
-            break
-        let keya,keyb
-        if(x < testElement.length)
-            keya = Number(testElement[x].key!)
-
-        if(y < tabElement.length)
-            keyb = Number(tabElement[y].key!)
-        if(( x < testElement.length && y < tabElement.length) && keya! < keyb!){
-            listELement.push(testElement[x])
-            x++
-        }
-        else if(( x < testElement.length && y < tabElement.length) && keya! > keyb!){
-            listELement.push(tabElement[y])
-            y++
-        }
-        else if(x >= testElement.length && y < tabElement.length){
-            listELement.push(tabElement[y])
-            y++
-        }
-        else if(y >= tabElement.length && x < testElement.length){
-            listELement.push(testElement[x])
-            x++
-        }
-        inRange = x <= testElement.length && y <= tabElement.length
-    }
-    return listELement
+        
+    listElement = combineElements(testElement,tabElement)
+    return listElement
 }
 
 export default function ListData({ type }: GameType) {
