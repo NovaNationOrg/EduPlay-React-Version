@@ -8,11 +8,11 @@ export function useDeviceHandler(){
     const devices = setUpDeviceMapping(useDevices())
     
     const [deviceNum,setDeviceNum] = useState(Number)
-    const[deviceId,setDeviceId] = useState(localStorage.getItem("favorite_device_id"))
+    const[deviceId,setDeviceId] = useState(localStorage.getItem("favorite_device_id")? localStorage.getItem("favorite_device_id"): "" )
     const favoriteDevice = localStorage.getItem("favorite_device")? Number(localStorage.getItem("favorite_device")):1
 
     function setFavoriteDevice(){
-            localStorage.setItem("favorite_device",deviceNum.toString())
+            localStorage.setItem("favorite_device",deviceNum.toString());
             localStorage.setItem("favorite_device_id",deviceId!);
 
             toast.success("Favorite device has been set",{id:"favorite-device-id"})
@@ -28,7 +28,7 @@ export function useDeviceHandler(){
     let deviceListing: JSX.Element[] = []
 
     
-    if(devices!=undefined &&  devices!.length !=0 && deviceNum ==0)
+    if(devices!=undefined &&  devices!.length !=0 && deviceNum ==0 && devices[0].deviceId!="")
         setDeviceInfo(devices[favoriteDevice-1].deviceId,favoriteDevice-1)
         
     if(devices?.length !=0 && devices != undefined){

@@ -128,8 +128,6 @@ export default function ScanningPage(){
 
     const {deviceListing, setFavoriteDevice, setDeviceInfo, deviceId} = useDeviceHandler()
     const videoArea = useMemo(()=>{
-        console.log(deviceId)
-        console.log("a")
         return (
             <Scanner components={qrComponents} constraints={{deviceId: deviceId! }} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
         )
