@@ -8,11 +8,13 @@ export function useDeviceHandler(){
     const devices = setUpDeviceMapping(useDevices())
     
     const [deviceNum,setDeviceNum] = useState(Number)
-    const[deviceId,setDeviceId] = useState("")
+    const[deviceId,setDeviceId] = useState(localStorage.getItem("favorite_device_id"))
     const favoriteDevice = localStorage.getItem("favorite_device")? Number(localStorage.getItem("favorite_device")):1
 
     function setFavoriteDevice(){
             localStorage.setItem("favorite_device",deviceNum.toString())
+            localStorage.setItem("favorite_device_id",deviceId!);
+
             toast.success("Favorite device has been set",{id:"favorite-device-id"})
     }
 

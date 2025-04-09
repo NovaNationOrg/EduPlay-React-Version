@@ -1,49 +1,50 @@
 @import url("./fonts.css");
-@media only screen 
-and (max-device-width: 1000px)
-{ 
-    .scanner-container{
-        width: 81%;
-        margin-left:auto;
-        margin-right:auto;
-        display: block;
-    }
-    .scanner-header-text{
-        margin-top: 10vh;  
-        position:relative; 
-        margin-left: 1vh;
-
-    }
-
-    .device-config-area{
-        margin-top: 1vh;
-        display: flex;
-        width: 100%;
-    }
-
-    .device-listing{
-        font-family: InterBold;
-        text-align-last: center;
-        margin-right: 15vw;
-        border-radius: 10px;
-        appearance: none;
-        background-color: rgb(65, 88, 114);
-        color: rgb(255, 255, 255);
-        min-height: 4vh;
-    }   
-
-    .favorite-button{
-        flex:1;
-        border-radius: 30px;
-        font-size: 4vw;
-        font-family: InterBold;
-        color: rgb(255, 255, 255);
-        margin-left: auto;  
-        margin-right: auto;
-        display: block;
-        border-radius: 10px;
-        background-color: rgb(65, 88, 114);
-        border: none;
-    }
+.scanner-container{
+    margin-top: 10vh;  
+    min-height: 41vh;
+    width: 81%;
+    margin-left:auto;
+    margin-right:auto;
+    display: block;
+}
+.scanner-header-text{
+    position:relative; 
+    margin-left: 1vh;
 
 }
+
+.device-config-area{
+    margin-top: 1vh;
+    display: flex;
+    width: 100%;
+}
+
+.device-listing{
+    font-family: InterBold;
+    text-align-last: center;
+    margin-right: 15vw;
+    border-radius: 10px;
+    appearance: none;
+    background-color: rgb(65, 88, 114);
+    color: rgb(255, 255, 255);
+    min-height: 4vh;
+}   
+
+.favorite-button{
+    flex:1;
+    border-radius: 30px;
+    font-size: 4vw;
+    font-family: InterBold;
+    color: rgb(255, 255, 255);
+    margin-left: auto;  
+    margin-right: auto;
+    display: block;
+    border-radius: 10px;
+    background-color: rgb(65, 88, 114);
+    border: none;
+}
+
+.video-box{
+    min-height: 40%;
+}
+

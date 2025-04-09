@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import Header from "../components/header"
 import { Scanner } from "@yudiel/react-qr-scanner"
 import { qrComponents } from "../components/qrSettings"
-import { useEffect,useState } from "react"
+import { useEffect,useMemo,useState } from "react"
 import "../styles/scanning-page.css"
 import { gameSelector } from "../game-selector"
 import { db } from "../database/db"
@@ -126,7 +126,15 @@ export default function ScanningPage(){
      }
      
 
-    const {deviceListing, setFavoriteDevice, setDeviceInfo, deviceId,deviceNum} = useDeviceHandler()
+    const {deviceListing, setFavoriteDevice, setDeviceInfo, deviceId} = useDeviceHandler()
+    const videoArea = useMemo(()=>{
+        console.log(deviceId)
+        console.log("a")
+        return (
+            <Scanner components={qrComponents} constraints={{deviceId: deviceId! }} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
+        )
+    },[deviceId])
+
     return(
         <>   
         <Toaster position="top-center" richColors/>
@@ -135,16 +143,18 @@ export default function ScanningPage(){
                         <Header gameClass = "eduplay-header" headerText="EduPlay"/>
                         <div className="scanner-container">
                         <p className="scanner-header-text">Scan Code</p>
-                            <Scanner components={qrComponents} constraints={{deviceId: deviceId }} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
-                            <div className="device-config-area">
+                        <div className = "video-box">
+                            {videoArea}
+                        </div>
+                        </div>
+                        <div className="device-config-area">
                         <select className = "device-listing" onChange={(e) => setDeviceInfo(e.target.value,e.target.selectedIndex-1)}>
                             <option disabled value={undefined} style={{color:"white"}}>Select a device</option>
                             {deviceListing}
                         </select>
-                        { deviceNum != Number(localStorage.getItem("favorite_device")) &&
+                        { deviceId != localStorage.getItem("favorite_device_id") &&
                             <button className="favorite-button" onClick={setFavoriteDevice}>Set Favorite Camera</button>
                         }
-                        </div>
                         </div>
                         
                         {
