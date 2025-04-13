@@ -1,8 +1,8 @@
-import "../styles/recent-games.css"
+import "../../styles/recent-games.css"
 import { useState } from 'react';
 import Modal from './modal';
 import { Link } from "react-router-dom";
-import { resetStorage } from "./game-resetter";
+import { resetStorage } from "../game-resetter";
 
 
 

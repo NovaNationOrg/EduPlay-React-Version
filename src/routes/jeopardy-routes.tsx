@@ -6,7 +6,7 @@ import ResultsPage from '../pages/Jeopardy/results-page'
 
 
 export default[
-    <Route key ="page1" path="jeopardyGame" element={<ListPage />} />,
-    <Route key ="page2" path="jeopardyGame/question" element={<QuestionPage />} />,
-    <Route key ="page3" path="jeopardyGame/results" element = {<ResultsPage />} />
+    <Route key ="_jp_page1" path="jeopardy" element={<ListPage />} />,
+    <Route key ="_jp_page2" path="jeopardy/question" element={<QuestionPage />} />,
+    <Route key ="_jp_page3" path="jeopardy/results" element = {<ResultsPage />} />
 ]
