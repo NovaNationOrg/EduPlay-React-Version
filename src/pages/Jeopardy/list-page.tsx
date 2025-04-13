@@ -52,7 +52,7 @@ function completedGameLoop(){
         addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
         localStorage.removeItem("curr_game")
     }
-    navigate("/jeopardyGame/results",{state:resultsData})
+    navigate("/jeopardy/results",{state:resultsData})
 
 }
 
@@ -71,7 +71,7 @@ export default function ListPage() {
     return (
         <>
             <div className="panel">
-                <Header gameClass="jeopardy-header" headerText="Jeopardy" />
+                <Header gameClass="game-header jeopardy-header" headerText="Jeopardy" />
                 <Toaster richColors position="top-center" />
 
                 {sessionStorage.getItem("category") == null ? (
@@ -93,7 +93,7 @@ export default function ListPage() {
                         <div className="hud-section">
                         <p className="score-label">${score}</p>
                         <button className="return-button" onClick={() => {
-                            navigate("/jeopardyGame")
+                            navigate("/jeopardy")
                             removeTier()
                             removeCategory()
                         }}>QUIT</button>

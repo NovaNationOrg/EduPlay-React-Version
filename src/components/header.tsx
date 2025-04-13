@@ -8,7 +8,7 @@ type HeaderProps = {
 export default function Header({gameClass,headerText}:HeaderProps) {
   
     return (        
-        <div className={gameClass} >{headerText}</div>             
+        <div className={`header ${gameClass}`} >{headerText}</div>             
     );
   }
 

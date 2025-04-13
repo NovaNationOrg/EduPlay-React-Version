@@ -1,12 +1,7 @@
 /* @import url("./fonts.css"); */
 
 
-
-.eduplay-header {
-    background: rgb(39, 139, 254);
-    background: linear-gradient(0deg, rgba(39, 139, 254, 1) 0%, rgba(255, 1, 221, 1) 100%);
-    font-size: 24px;
-    font-family: FontDingerSwanky;
+.header{
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
@@ -18,22 +13,31 @@
     text-align: center;
 }
 
+.game-header{
+    font-size: 8.5vw;
+}
+
+.eduplay-header {
+    background: rgb(39, 139, 254);
+    background: linear-gradient(0deg, rgba(39, 139, 254, 1) 0%, rgba(255, 1, 221, 1) 100%);
+    font-size: 24px;
+    font-family: FontDingerSwanky;
+    text-align: center;
+}
+
+
 .jeopardy-header {
-    background: rgb(255, 255, 255);
-    /* background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(255, 1, 221, 1) 100%); */
     background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
     font-size: 8.5vw;
     font-family: FontDingerSwanky;
-    margin-top: 0;
-    margin-right: 0;
-    /* color: aliceblue; */
     color: black;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding-top: 15%;
-    padding-right: 0;
-    padding-bottom: 0px;
-    padding-left: 0;
     text-align: center;
     text-shadow: -1px -1px 0 #FF13F0, 1px -1px 0 #FF13F0, -1px 1px 0 #FF13F0, 1px 1px 0 #FF13F0;
+}
+
+.hangman-header {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,105,0.4453431030615371) 35%, rgba(0,212,255,1) 100%);
+    font-family: Wood;
+    color: white;
+    text-align: center;
 }
