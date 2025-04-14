@@ -7,6 +7,7 @@ import { toast, Toaster } from "sonner";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../database/db";
 import { useNavigate } from "react-router-dom";
+import { addGameResult } from "../../database/scripts/game-result";
 
 function processCorrectGuesses(guesses:string[],word:string){
     let correctGuesses:string[] = []
@@ -104,6 +105,9 @@ export default function Hangman(){
             resultsData[1] = incorrect
             
             localStorage.setItem("score",(correct-incorrect).toString())
+
+            addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_hm_")
+            
             clearGameStorage()
             navigate("/gameResult",{state:resultsData})
         }

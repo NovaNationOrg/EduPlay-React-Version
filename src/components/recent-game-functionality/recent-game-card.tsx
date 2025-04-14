@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Modal from './modal';
 import { Link } from "react-router-dom";
 import { resetStorage } from "../game-resetter";
+import { GameMapping } from "../game-listing";
 
 
 
@@ -28,17 +29,18 @@ const reviewOpen = () => setModalState(true);
 const reviewClose = () => setModalState(false);
 
 
+    const gameTitle = GameMapping[cardClass as keyof typeof GameMapping] 
     return(
         <div className = "recent-game-container">
-            <button className={`card-type-${cardClass}`} key={game_id} onClick={reviewOpen}>
-            {`Game : ${cardClass} ${title_date.toLocaleDateString("en-GB")}`}
-                <Modal isOpen={reviewModalOpen} handleClose={reviewClose} >
+            <button className={`recent-card card-type-${cardClass}`} key={game_id} onClick={reviewOpen}>
+            {`Game : ${gameTitle} ${title_date.toLocaleDateString("en-GB")}`}
+                <Modal modalClass = {cardClass} isOpen={reviewModalOpen} handleClose={reviewClose} >
                   <div className={`modal-type-${cardClass}`}>
                     <div className="correct-text">Correct: {correct}</div>
                     <div className="incorrect-text">Incorrect: {incorrect}</div>
                     <div className="score-text">Score: {score}</div>
                     
-                    <Link to="/jeopardyGame"><button className ={ `retry-button-${cardClass}`} onClick={setupGame}>Retry</button></Link>
+                    <Link to={"/" +  gameTitle.toLowerCase()}><button className ={ `retry-button retry-button-${cardClass}`} onClick={setupGame}>Retry</button></Link>
                   </div>
                 </Modal>
             </button>

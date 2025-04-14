@@ -38,7 +38,6 @@
 }
 
 .hangman-guessed-area{
-    flex:1;
     align-self: center;
    
 }
@@ -64,6 +63,7 @@
 
 .hangman-guess-word-area{
     white-space: pre;
+    font-size: 5vw;
 }
 
 

@@ -75,7 +75,7 @@ function prepareBodyGroup(incorrect:number){
 function prepareHangmanSVG(incorrect:number){
     let bodyGroup:JSX.Element = prepareBodyGroup(incorrect)
     return(<>
-    <svg  xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 280" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
+    <svg  className = "hangman-svg-area" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 280" shapeRendering="geometricPrecision" textRendering="geometricPrecision">
         <g id = "hanging-post">
             <line x1="0" y1="23.62345" x2="0" y2="-23.623449" transform="translate(150 56.766485)" fill="none" stroke="#3f5787" strokeWidth="3"/>
             <line x1="52.890993" y1="0" x2="-52.890993" y2="0" transform="translate(96.707904 33.143036)" fill="none" stroke="#3f5787" strokeWidth="3"/>

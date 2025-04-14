@@ -17,9 +17,9 @@ function removeTier() {
 
 function outputToast(message:string){
     if(message=="Correct")
-        toast.success(message)
+        toast.success(message,{id:"message-toast"})
     else
-        toast.error(message)
+        toast.error(message,{id:"message-toast"})
 }
 
 function completedGameLoop(){

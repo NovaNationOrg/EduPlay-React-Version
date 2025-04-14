@@ -29,14 +29,14 @@
 
 
 .jeopardy-header {
-    background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
+    background: var(--jp-bg-color);
     font-family: FontDingerSwanky;
     color: black;
     text-shadow: -1px -1px 0 #FF13F0, 1px -1px 0 #FF13F0, -1px 1px 0 #FF13F0, 1px 1px 0 #FF13F0;
 }
 
 .hangman-header {
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,105,0.4453431030615371) 35%, rgba(0,212,255,1) 100%);
+    background: var(--hm-bg-color);
     font-family: Wood;
     color: white;
 }
