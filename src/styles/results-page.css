@@ -4,15 +4,25 @@
     margin-right: auto;
     font-family: InterBold;
     font-size: 6vw;
-
     padding: 10px 20px;
     text-decoration: none;
-    background-color: aqua;
     color:white;
-    background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
     border-style: none;
 
 }
+
+._jp_home-button{
+
+    background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
+
+}
+
+._hm_home-button{
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,105,0.4453431030615371) 35%, rgba(0,212,255,1) 100%);
+    border-style: none;
+
+}
+
 .results-heading{
     font-size: 8vw;
     margin-left: auto;

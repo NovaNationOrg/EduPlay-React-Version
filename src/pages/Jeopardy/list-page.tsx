@@ -52,7 +52,7 @@ function completedGameLoop(){
         addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
         localStorage.removeItem("curr_game")
     }
-    navigate("/jeopardy/results",{state:resultsData})
+    navigate("/gameResult",{state:resultsData})
 
 }
 

@@ -19,7 +19,8 @@ function validGame(game_code:string){
     const gameListing = Object.keys(GameMapping)
     for(const game of gameListing){
         if(game_code == game){
-            sessionStorage.setItem("game_route",GameMapping[game_code as keyof typeof GameMapping])
+            sessionStorage.setItem("game_route",GameMapping[game_code as keyof typeof GameMapping].toLowerCase())
+            localStorage.setItem("game_code",game_code)
             return true
         }
     }

@@ -15,6 +15,8 @@
 
 .game-header{
     font-size: 8.5vw;
+    text-align: center;
+
 }
 
 .eduplay-header {
@@ -28,10 +30,8 @@
 
 .jeopardy-header {
     background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
-    font-size: 8.5vw;
     font-family: FontDingerSwanky;
     color: black;
-    text-align: center;
     text-shadow: -1px -1px 0 #FF13F0, 1px -1px 0 #FF13F0, -1px 1px 0 #FF13F0, 1px 1px 0 #FF13F0;
 }
 
@@ -39,5 +39,4 @@
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,105,0.4453431030615371) 35%, rgba(0,212,255,1) 100%);
     font-family: Wood;
     color: white;
-    text-align: center;
 }
