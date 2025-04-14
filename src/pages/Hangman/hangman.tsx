@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import HMInputItems from "../../components/hangman/hangman-input-items";
 import Header from "../../components/header";
 import "../../styles/Hangman/hangman.css"
@@ -107,7 +107,7 @@ export default function Hangman(){
             localStorage.setItem("score",(correct-incorrect).toString())
 
             addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_hm_")
-            
+
             clearGameStorage()
             navigate("/gameResult",{state:resultsData})
         }

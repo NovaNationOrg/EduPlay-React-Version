@@ -9,7 +9,6 @@ interface HMInputItemsProps{
 
 
 export default function HMInputItems({addNewGuess,guesses,completed}:HMInputItemsProps){
-    const inputList:JSX.Element[] = produceInputList()
 
     function produceInputList(){
         let inputList: JSX.Element[] = []
