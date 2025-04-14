@@ -23,11 +23,20 @@ function processCorrectGuesses(guesses:string[],word:string){
     return word ? correctGuesses : ['-1']
 }
 
-function updateRoundInformation(correct:boolean, numCorrect:number,numIncorrect:number){
-    if(correct)
+function updateRoundInformation(correct:boolean){
+    
+    let numCorrect = Number(localStorage.getItem("_hm_num_correct")) 
+    let numIncorrect = Number(localStorage.getItem("_hm_num_incorrect")) 
+
+    if(correct){
+        sessionStorage.removeItem("answer-found")
+        numCorrect++
         localStorage.setItem("_hm_num_correct",numCorrect.toString())
-    else
+    }
+    else{
+        numIncorrect++
         localStorage.setItem("_hm_num_incorrect",numIncorrect.toString())
+    }
 
     const status = correct? "success" :"fail"
     localStorage.setItem("_hm_result_decided", status)
@@ -45,7 +54,6 @@ function clearGameStorage(){
 export default function Hangman(){
     let guessArray = localStorage.getItem("_hm_current_guesses")
     const game_id = localStorage.getItem("curr_game")
-    console.log(game_id)
     let question:string = "" , category:string = ""
     const navigate = useNavigate()
     if(game_id==null)
@@ -66,22 +74,19 @@ export default function Hangman(){
     const result = localStorage.getItem("_hm_result_decided")
     if(result != null && result != "pending")
         promptNextRound()
+    
     const correctGuesses = processCorrectGuesses(guesses,question)
     
     if(localStorage.getItem("_hm_result_decided")==null)
         localStorage.setItem("_hm_result_decided","pending")
 
     if(sessionStorage.getItem("answer-found") == "true" && localStorage.getItem("_hm_result_decided")=="pending"){
-        sessionStorage.removeItem("answer-found")
-        const numCorrect = Number(localStorage.getItem("_hm_num_correct")) + 1
-        const numIncorrect = Number(localStorage.getItem("_hm_num_incorrect")) 
-        updateRoundInformation(true,numCorrect,numIncorrect)
+        updateRoundInformation(true)
+        updateGameState(true)
     }
 
     if(guesses.length - correctGuesses.length >=6 && correctGuesses[0]!="-1" && localStorage.getItem("_hm_result_decided")=="pending"){
-        const numIncorrect = Number(localStorage.getItem("_hm_num_incorrect")) + 1
-        const numCorrect = Number(localStorage.getItem("_hm_num_correct"))
-        updateRoundInformation(false,numCorrect,numIncorrect)
+        updateRoundInformation(false)
         updateGameState(true)
     }
 
@@ -123,7 +128,6 @@ export default function Hangman(){
     function promptNextRound(){
         const roundNumber = localStorage.getItem("_hm_round_number") ? localStorage.getItem("_hm_round_number") : 1
         const status = localStorage.getItem("_hm_result_decided") == "success" ?  "success" : "error"
-        console.log(status)
         if(status == "success")
             toast.success("Round " + roundNumber + " completed!",{id:"prompt-game-id",duration:Infinity, dismissible:false, classNames: {info:""} ,
                 action : {label:"Next Round",key:"next-round-button",onClick: () =>{nextRound()}}

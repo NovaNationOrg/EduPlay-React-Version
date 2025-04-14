@@ -102,7 +102,6 @@ export default function HMGuessDisplay({guesses,currentWord,category,incorrect,p
         parentTrigger(true)
     }
 
-    console.log(hiddenWord)
     return(<>
         <div className="hangman-category-title">{category}</div>
         {prepareHangmanSVG(incorrect)}
