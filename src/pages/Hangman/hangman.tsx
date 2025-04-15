@@ -69,8 +69,9 @@ export default function Hangman(){
     
     useEffect(()=>{
         causeRelaod(true)
+        console.log(reload)
     },[])
-    
+
     if(words){
         localStorage.setItem("_hm_total_round",(words.length).toString())
         question = words![roundNumber-1].question
