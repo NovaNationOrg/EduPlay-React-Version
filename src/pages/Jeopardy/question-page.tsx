@@ -4,7 +4,7 @@ import "../../styles/Jeopardy/question-page.css";
 import { useState, useEffect } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../database/db";
-import { Toaster, toast} from "sonner";
+import { toast} from "sonner";
 
 function pageReturn(navigate:NavigateFunction){
     removeTier()
@@ -94,7 +94,6 @@ export default function QuestionPage() {
     return (
         <>
             <div className="panel">
-                <Toaster richColors position="top-center"/>
                 <Header gameClass="jeopardy-header" headerText="Jeopardy" />
                 <div className="info-panel">
                     <p className="timer"><CountdownTimer /></p>

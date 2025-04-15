@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rollup/plugin-replace": "^6.0.2",
     "@types/react-router-dom": "^5.3.3",
     "@yudiel/react-qr-scanner": "^2.2.1",
     "dexie": "^4.0.11",

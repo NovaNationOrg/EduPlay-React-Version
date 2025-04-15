@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { db } from "../../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { addGameResult } from "../../database/scripts/game-result";
-import { Toaster,toast } from "sonner";
+import { toast } from "sonner";
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
@@ -72,7 +72,6 @@ export default function ListPage() {
         <>
             <div className="panel">
                 <Header gameClass="game-header jeopardy-header" headerText="Jeopardy" />
-                <Toaster richColors position="top-center" />
 
                 {sessionStorage.getItem("category") == null ? (
                     <>

@@ -9,7 +9,7 @@ export function useDeviceHandler(){
     
     const [deviceNum,setDeviceNum] = useState(Number)
     const[deviceId,setDeviceId] = useState(localStorage.getItem("favorite_device_id")? localStorage.getItem("favorite_device_id"): "" )
-    const favoriteDevice = localStorage.getItem("favorite_device")? Number(localStorage.getItem("favorite_device")):1
+    let favoriteDevice = localStorage.getItem("favorite_device")? Number(localStorage.getItem("favorite_device")):1
 
     function setFavoriteDevice(){
             localStorage.setItem("favorite_device",deviceNum.toString());
@@ -28,8 +28,14 @@ export function useDeviceHandler(){
     let deviceListing: JSX.Element[] = []
 
     
-    if(devices!=undefined &&  devices!.length !=0 && deviceNum ==0 && devices[0].deviceId!="")
+    if(devices!=undefined &&  devices!.length !=0 && deviceNum ==0 && devices[0].deviceId!=""){
+        const validID = devices[favoriteDevice] ? true : false
+        if(!validID){
+            localStorage.setItem("favorite_device","1")
+            favoriteDevice = 1
+        }
         setDeviceInfo(devices[favoriteDevice-1].deviceId,favoriteDevice-1)
+    }
         
     if(devices?.length !=0 && devices != undefined){
         selectedDevice = devices.filter((device,index)=>{
