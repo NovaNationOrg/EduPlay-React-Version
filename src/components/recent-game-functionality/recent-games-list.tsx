@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks';
-import { db } from '../database/db';
+import { db } from '../../database/db';
 import { RecentGameCard } from './recent-game-card';
 
 

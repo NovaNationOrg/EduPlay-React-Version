@@ -94,10 +94,10 @@ function setupComponents(type:string){
             if(!isCompletedCategory(category.substring(0,category.length-1)))
                 return category
         }).map((category) =>
-            <Link className="tab-area" to={"/jeopardyGame"} key={category.substring(category.length-1,category.length)}>
+            <Link className="tab-area" to={"/jeopardy"} key={category.substring(category.length-1,category.length)}>
                 <button className="main-tab" onClick={() => {
                     saveCategory(category.substring(0,category.length-1));
-                    navigate("/jeopardyGame");
+                    navigate("/jeopardy");
                 }}>
                     {category.substring(0,category.length-1)}</button>
             </Link>
@@ -126,7 +126,7 @@ function setupComponents(type:string){
                         return tier
                 }
             ).map((tier) =>
-                <Link className="tab-area" to={"/jeopardyGame/question"} key={tier}>
+                <Link className="tab-area" to={"/jeopardy/question"} key={tier}>
                     <button className="main-tab" onClick={() => {
                         saveTier(tier.toString());
                     }}>

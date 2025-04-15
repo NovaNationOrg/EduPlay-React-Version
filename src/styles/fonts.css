@@ -12,3 +12,8 @@
   font-family: Jersey15;
   src: url("./fonts/Jersey15-Regular.ttf");
 }
+
+@font-face {
+  font-family: Wood;
+  src: url("./fonts/wood-font/Wood-3n3G.ttf");
+}
