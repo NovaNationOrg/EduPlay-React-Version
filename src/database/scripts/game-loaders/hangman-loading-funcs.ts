@@ -27,8 +27,7 @@ export async function addHangmanGame(hangmanContent: string[] | undefined) {
             x++
             i++
         }
-        
-        
+        i--
     }
 }
 

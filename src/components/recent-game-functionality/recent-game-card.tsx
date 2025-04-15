@@ -35,14 +35,16 @@ const reviewClose = () => setModalState(false);
             <button className={`recent-card card-type-${cardClass}`} key={game_id} onClick={reviewOpen}>
             {`Game : ${gameTitle} ${title_date.toLocaleDateString("en-GB")}`}
                 <Modal modalClass = {cardClass} isOpen={reviewModalOpen} handleClose={reviewClose} >
-                  <div className={`modal-type-${cardClass}`}>
-                    <div className="correct-text">Correct: {correct}</div>
-                    <div className="incorrect-text">Incorrect: {incorrect}</div>
-                    <div className="score-text">Score: {score}</div>
-                    
-                    <Link to={"/" +  gameTitle.toLowerCase()}><button className ={ `retry-button retry-button-${cardClass}`} onClick={setupGame}>Retry</button></Link>
-                  </div>
+                    <div className={`modal-type modal-type-${cardClass}`}>
+                        <div className="recent-modal-info">
+                            <div className="correct-text">Correct: {correct}</div>
+                            <div className="incorrect-text">Incorrect: {incorrect}</div>
+                            <div className="score-text">Score: {score}</div>
+                            <Link to={"/" +  gameTitle.toLowerCase()}><button className ={ `retry-button retry-button-${cardClass}`} onClick={setupGame}>Retry</button></Link>
+                        </div>
+                    </div>
                 </Modal>
+                
             </button>
 
         </div>

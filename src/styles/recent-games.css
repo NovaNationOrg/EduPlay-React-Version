@@ -17,19 +17,20 @@
     border-radius: 20px;
     border-style: none;
     color:white;
+    font-family: Jersey15;
 }
+
 
 .card-type-_jp_{
     background: var(--jp-bg-color);
-    font-family: FontdingerSwanky;
 }
 
 .card-type-_hm_{
     background: var(--hm-bg-color);
-    font-family: Wood;
 }
 
-.modal-type-_jp_{
+.modal-type{
+    
     height:80vh;
     width: 80vw;
     top: 50%;
@@ -37,11 +38,22 @@
     transform: translate(-50%, -50%);
     position: fixed;
     align-items: center;
-    background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
-    background-color: rgb(37, 63, 63);
     opacity: 0.75;
     border-style: none;
     border-radius: 20px;
+    align-content: center;
+
+}
+
+.modal-type-_jp_{
+    background: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
+    background-color: rgb(37, 63, 63);
+}
+
+.modal-type-_hm_{
+    background: var(--hm-bg-color);
+    background-color: rgb(37, 63, 63);
+
 }
 
 .modal-backdrop{
@@ -56,9 +68,22 @@
     backdrop-filter: blur(25px);
 }
 
+.recent-modal-info{
+    height: 20vh;
+    position: relative;
+    margin: auto; 
+    display: flex;
+    top:auto;
+    bottom: auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 .retry-button{
-    font-size: 2vh;
+    margin-top: 20px;
+    font-size: 4vw;
+    height: auto;
     padding: 10px 40px;
     color:white;
     border-radius: 20px;
