@@ -31,25 +31,17 @@ function ReloadPrompt() {
         setOfflineReady(false)
         setNeedRefresh(false)
         }
-    console.log(needRefresh)
-    return (
-        <div>
-        { (offlineReady || needRefresh)
-            && <div>
-                { offlineReady &&(
-                    toast.info("App ready to work offline",{id:"offline-ready-toast"})
-                )
-                }
-       
-                { needRefresh &&  toast.info("New content available, click the reload button to update", {
-                id:"reload-prompt-toast", duration:Infinity, dismissible:false,
-                action : {label:"Reload",key:"no-button",onClick: () =>{updateServiceWorker(true)}},
-                cancel : {label:"Close",key:"yes-button",onClick: () =>{close()}}
-                }) }
-            </div>
-        }
-        </div>
-    )
+    
+    if(offlineReady)
+        toast.info("App ready to work offline",{id:"offline-ready-toast"})
+    if(needRefresh)
+        toast.info("New content available, click on reload button to update", {
+            id:"reload-prompt-toast", duration:Infinity, dismissible:false,
+            action : {label:"Reload",key:"no-button",onClick: () =>{updateServiceWorker(true)}},
+            cancel : {label:"Close",key:"yes-button",onClick: () =>{close()}}
+        }) 
+
+    return(<></>)
 }
 
 
