@@ -3,7 +3,7 @@ import HMInputItems from "../../components/hangman/hangman-input-items";
 import Header from "../../components/header";
 import "../../styles/Hangman/hangman.css"
 import HMGuessDisplay from "../../components/hangman/hangman-guess-display";
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../database/db";
 import { useNavigate } from "react-router-dom";
@@ -148,7 +148,6 @@ export default function Hangman(){
     return(<>
         <div className="panel">
             <Header gameClass="game-header hangman-header" headerText="Hangman" key={"hangman-header"} />
-            <Toaster richColors position="top-center" />
             <div className="hangman-game-area">
                 <div className="hangman-display-area">
                     <HMGuessDisplay guesses={correctGuesses} currentWord={question} category={category} incorrect={guesses.length - correctGuesses.length} parentTrigger = {updateGameState} completed ={gameState}/>

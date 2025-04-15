@@ -6,7 +6,7 @@ import { useEffect,useMemo,useState } from "react"
 import "../styles/scanning-page.css"
 import { gameSelector } from "../components/game-selector"
 import { db } from "../database/db"
-import { toast, Toaster } from "sonner"
+import { toast } from "sonner"
 import {useDeviceHandler}  from "../components/custom-hooks/useFavoriteSelector"
 import { GameMapping } from "../components/game-listing"
 async function gameExists(game_id:string){
@@ -141,7 +141,6 @@ export default function ScanningPage(){
 
     return(
         <>   
-        <Toaster position="top-center" richColors/>
             <div className="panel">
                 <div>
                         <Header gameClass = "eduplay-header" headerText="EduPlay"/>
@@ -166,6 +165,7 @@ export default function ScanningPage(){
                                 <Link className="join-area" to={`/${sessionStorage.getItem("game_route")}`}>
                                     <button className="join-button" 
                                         onClick={() => {
+                                                    toast.dismiss("qrnum-toast")
                                                     gameSelector(gameFound,splitData)
                                                 }}>Begin</button></Link>
                         }

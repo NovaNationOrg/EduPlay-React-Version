@@ -1,4 +1,4 @@
-import { toast, Toaster } from 'sonner'
+import { toast } from 'sonner'
 
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
@@ -34,7 +34,6 @@ function ReloadPrompt() {
     console.log(needRefresh)
     return (
         <div>
-            <Toaster richColors position='top-center'/>
         { (offlineReady || needRefresh)
             && <div>
                 { offlineReady &&(
