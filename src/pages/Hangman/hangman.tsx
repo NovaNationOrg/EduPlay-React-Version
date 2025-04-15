@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import HMInputItems from "../../components/hangman/hangman-input-items";
 import Header from "../../components/header";
 import "../../styles/Hangman/hangman.css"
@@ -52,6 +52,7 @@ function clearGameStorage(){
 }
 
 export default function Hangman(){
+    
     let guessArray = localStorage.getItem("_hm_current_guesses")
     const game_id = localStorage.getItem("curr_game")
     let question:string = "" , category:string = ""
@@ -64,7 +65,12 @@ export default function Hangman(){
     const [guesses,updateGuesses] = useState<string[]>(guessArray? JSON.parse(guessArray):([]))
     const state = localStorage.getItem("_hm_result_decided")
     const[gameState,updateGameState] = useState(state == "pending" || state==null? false: true)
-
+    const[reload,causeRelaod] = useState(false)
+    
+    useEffect(()=>{
+        causeRelaod(true)
+    },[])
+    
     if(words){
         localStorage.setItem("_hm_total_round",(words.length).toString())
         question = words![roundNumber-1].question
