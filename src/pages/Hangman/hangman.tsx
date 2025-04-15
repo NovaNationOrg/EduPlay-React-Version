@@ -109,7 +109,7 @@ export default function Hangman(){
             resultsData[0] = correct
             resultsData[1] = incorrect
             
-            localStorage.setItem("score",(correct-incorrect).toString())
+            localStorage.setItem("score",correct.toString())
 
             addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_hm_")
 
