@@ -29,7 +29,7 @@ export function useDeviceHandler(){
 
     
     if(devices!=undefined &&  devices!.length !=0 && deviceNum ==0 && devices[0].deviceId!=""){
-        const validID = devices[favoriteDevice] ? true : false
+        const validID = devices[favoriteDevice-1] ? true : false
         if(!validID){
             localStorage.setItem("favorite_device","1")
             favoriteDevice = 1
