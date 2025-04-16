@@ -13,12 +13,18 @@ const pwaOptions: Partial<VitePWAOptions> = {
   injectRegister: 'script',
   manifest:{
     icons:[
-    {
-      "src": "/web-app-manifest-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
+      {
+        "src": "/web-app-manifest-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "/web-app-manifest-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      }
   ],
     theme_color:"#181818",
   },
@@ -26,19 +32,35 @@ const pwaOptions: Partial<VitePWAOptions> = {
   devOptions:{
     enabled:true
   } ,
-}
-
-export default defineConfig({
-  plugins: [react(),
-            VitePWA(pwaOptions),
-            replace(replaceOptions),
-  ],resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+  workbox:{
+    runtimeCaching:[{
+      urlPattern: ({ request }) => request.destination == "image",
+      handler: "StaleWhileRevalidate" as const,
+      options:{
+        cacheName: "image-cache",
+        expiration:{
+          maxAgeSeconds: 60 * 60
+        },
+        cacheableResponse: {
+          statuses: [0, 200]
+        }
+      }
+    },
+  {
+    urlPattern: ({ request }) => request.destination == "font",
+    handler: "StaleWhileRevalidate" as const,
+    options:{
+      cacheName: "font-cache",
+      expiration:{
+        maxAgeSeconds: 60 * 60
+      },
+      cacheableResponse: {
+        statuses: [0, 200]
+      }
     }
+  }]
   }
-  
-})
+}
 
 if (process.env.SW === 'true') {
   pwaOptions.srcDir = 'src'
@@ -63,4 +85,14 @@ if (reload) {
 if (selfDestroying)
   pwaOptions.selfDestroying = selfDestroying
 
-
+export default defineConfig({
+  plugins: [react(),
+            VitePWA(pwaOptions),
+            replace(replaceOptions),
+  ],resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  }
+  
+})
