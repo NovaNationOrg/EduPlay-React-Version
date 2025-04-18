@@ -2,7 +2,7 @@ import { MouseEventHandler, useState } from "react"
 import Header from "../components/header"
 import { Link } from "react-router-dom";
 import "../styles/landing-page.css"
-import { RecentGamesList } from "../components/recent-games-list";
+import { RecentGamesList } from "../components/recent-game-functionality/recent-games-list";
 
 function saveName(name: string): MouseEventHandler<HTMLButtonElement> | void {
     sessionStorage.setItem("username", name)

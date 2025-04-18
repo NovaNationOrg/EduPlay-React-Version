@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@rollup/plugin-replace": "^6.0.2",
     "@types/react-router-dom": "^5.3.3",
     "@yudiel/react-qr-scanner": "^2.2.1",
     "dexie": "^4.0.11",
@@ -20,7 +21,6 @@
     "react-dom": "^19.0.0",
     "react-router-bootstrap": "^0.26.3",
     "react-router-dom": "^7.2.0",
-    "react-toastify": "^11.0.5",
     "sonner": "^2.0.1"
   },
   "devDependencies": {

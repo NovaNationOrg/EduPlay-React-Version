@@ -2,7 +2,8 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { db } from "../database/db"
 import { Link, useNavigate } from "react-router-dom"
 import { JSX, MouseEventHandler } from "react"
-import { toast } from "react-toastify"
+import { toast } from "sonner"
+import { combineElements } from "./element-merger"
 
 type GameType = {
     type: string
@@ -17,7 +18,6 @@ function saveTier(tier: string): MouseEventHandler<HTMLButtonElement> | void {
 }
 
 function loadCategory() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where('game_id').equals(localStorage.getItem("curr_game")!).toArray())
     const themes = [...new Set(jeopardyGameData?.map((record) => (record.theme)))]
 
@@ -31,7 +31,6 @@ function loadTier() {
     const selectedCategory = sessionStorage.getItem("category")
 
     if (selectedCategory != null) {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         const jeopardyGameData = useLiveQuery(() => db.jeopardyData.where("theme").equals(selectedCategory).toArray())
         const tiers = [...new Set(jeopardyGameData?.map(record => record.points))]
 
@@ -76,7 +75,7 @@ function setupComponents(type:string){
     const navigate = useNavigate()
     let tabElement: JSX.Element[] = []
     let testElement: JSX.Element[] = []
-    let listELement: JSX.Element[] = []
+    let listElement: JSX.Element[] = []
     if (type == "Category"){
 
         testElement = themes.filter((category) =>{
@@ -85,7 +84,7 @@ function setupComponents(type:string){
         }).map((category) =>
             <div className = "tab-area" key={category.substring(category.length-1,category.length)}>
                 <button className="main-tab-completed" onClick={() => {
-                    alertCompleted("category")
+                    toast.info("This category has already been completed",{id:"completed-toast"})
                 }}>
                     {category.substring(0,category.length-1)}</button>
             </div>
@@ -95,10 +94,10 @@ function setupComponents(type:string){
             if(!isCompletedCategory(category.substring(0,category.length-1)))
                 return category
         }).map((category) =>
-            <Link className="tab-area" to={"/jeopardyGame"} key={category.substring(category.length-1,category.length)}>
+            <Link className="tab-area" to={"/jeopardy"} key={category.substring(category.length-1,category.length)}>
                 <button className="main-tab" onClick={() => {
                     saveCategory(category.substring(0,category.length-1));
-                    navigate("/jeopardyGame");
+                    navigate("/jeopardy");
                 }}>
                     {category.substring(0,category.length-1)}</button>
             </Link>
@@ -115,7 +114,7 @@ function setupComponents(type:string){
                 }).map((tier) => 
                     <div className="tab-area" key={tier}>
                     <button className="main-tab-completed" onClick={() => {
-                        alertCompleted("question");
+                        toast.info("This question has already been completed",{id:"completed-toast"})
                     }}>
                         ${tier}</button>
                     </div>
@@ -127,7 +126,7 @@ function setupComponents(type:string){
                         return tier
                 }
             ).map((tier) =>
-                <Link className="tab-area" to={"/jeopardyGame/question"} key={tier}>
+                <Link className="tab-area" to={"/jeopardy/question"} key={tier}>
                     <button className="main-tab" onClick={() => {
                         saveTier(tier.toString());
                     }}>
@@ -137,37 +136,9 @@ function setupComponents(type:string){
             }
             
         }
-    let x =0,y = 0
-    let inRange = x <= testElement.length && y <= tabElement.length
-    while(inRange){
-
-        if(x==testElement.length && y == tabElement.length)
-            break
-        let keya,keyb
-        if(x < testElement.length)
-            keya = Number(testElement[x].key!)
-
-        if(y < tabElement.length)
-            keyb = Number(tabElement[y].key!)
-        if(( x < testElement.length && y < tabElement.length) && keya! < keyb!){
-            listELement.push(testElement[x])
-            x++
-        }
-        else if(( x < testElement.length && y < tabElement.length) && keya! > keyb!){
-            listELement.push(tabElement[y])
-            y++
-        }
-        else if(x >= testElement.length && y < tabElement.length){
-            listELement.push(tabElement[y])
-            y++
-        }
-        else if(y >= tabElement.length && x < testElement.length){
-            listELement.push(testElement[x])
-            x++
-        }
-        inRange = x <= testElement.length && y <= tabElement.length
-    }
-    return listELement
+        
+    listElement = combineElements(testElement,tabElement)
+    return listElement
 }
 
 export default function ListData({ type }: GameType) {
@@ -180,9 +151,3 @@ export default function ListData({ type }: GameType) {
     )
 }
 
-function alertCompleted(type:string) {
-    toast.info("This " + type + " has already been completed",{
-        toastId:"completed-toast",
-        theme: "dark"}
-    )
-}

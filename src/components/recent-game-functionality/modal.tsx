@@ -5,9 +5,10 @@ interface ModalProps {
     isOpen: boolean;
     handleClose: () => void;
     children: React.ReactNode;
+    modalClass:string
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, handleClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, handleClose, children ,modalClass}) => {
     if (!isOpen) return null;
     // eslint-disable-next-line react-hooks/rules-of-hooks
 
@@ -15,8 +16,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, handleClose, children }) => {
         <Backdrop onClick={handleClose}>
             <div className="modal-backdrop" onClick={(e) => e.stopPropagation()}>
                 {children}
-                
-                <button className="modal-close-button" onClick={handleClose}> X </button>
+                <button className={"modal-close-button modal-close-button-" + modalClass } onClick={handleClose}> X </button>
             </div>
         </Backdrop>
     );

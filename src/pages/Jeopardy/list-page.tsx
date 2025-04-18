@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/Jeopardy/list-page.css"
 import Header from '../../components/header'
 import ListData from "../../components/dynamic-list";
-import { ToastContainer, toast} from 'react-toastify';
 import { useEffect } from "react";
 import { db } from "../../database/db";
 import { useLiveQuery } from "dexie-react-hooks";
 import { addGameResult } from "../../database/scripts/game-result";
+import { toast } from "sonner";
 function removeCategory() {
     sessionStorage.removeItem("category")
 }
@@ -17,9 +17,9 @@ function removeTier() {
 
 function outputToast(message:string){
     if(message=="Correct")
-        toast.success(message)
+        toast.success(message,{id:"message-toast"})
     else
-        toast.error(message)
+        toast.error(message,{id:"message-toast"})
 }
 
 function completedGameLoop(){
@@ -52,7 +52,7 @@ function completedGameLoop(){
         addGameResult(localStorage.getItem("curr_game")!,resultsData,Number(localStorage.getItem("score")),"_jp_")
         localStorage.removeItem("curr_game")
     }
-    navigate("/jeopardyGame/results",{state:resultsData})
+    navigate("/gameResult",{state:resultsData})
 
 }
 
@@ -71,8 +71,7 @@ export default function ListPage() {
     return (
         <>
             <div className="panel">
-                <Header gameClass="jeopardy-header" headerText="Jeopardy" />
-                <ToastContainer />
+                <Header gameClass="game-header jeopardy-header" headerText="Jeopardy" />
 
                 {sessionStorage.getItem("category") == null ? (
                     <>
@@ -93,7 +92,7 @@ export default function ListPage() {
                         <div className="hud-section">
                         <p className="score-label">${score}</p>
                         <button className="return-button" onClick={() => {
-                            navigate("/jeopardyGame")
+                            navigate("/jeopardy")
                             removeTier()
                             removeCategory()
                         }}>QUIT</button>

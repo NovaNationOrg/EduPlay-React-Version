@@ -66,3 +66,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+
+:root {
+  --hm-bg-color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,121,105,0.4453431030615371) 35%, rgba(0,212,255,1) 100%);
+  --jp-bg-color: linear-gradient(to bottom, rgb(43, 11, 42) 0%, rgb(25, 7, 41) 50%, rgb(0, 14, 31) 100%);
+  --jb-bg-color2:linear-gradient(to bottom, rgb(103, 27, 101) 0%, rgb(48, 13, 79) 50%, rgb(1, 32, 71) 100%);
+}

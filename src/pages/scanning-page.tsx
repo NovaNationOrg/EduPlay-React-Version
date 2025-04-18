@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 import Header from "../components/header"
 import { Scanner } from "@yudiel/react-qr-scanner"
 import { qrComponents } from "../components/qrSettings"
-import { useEffect,useState } from "react"
+import { useEffect,useMemo,useState } from "react"
 import "../styles/scanning-page.css"
-import { gameSelector } from "../game-selector"
+import { gameSelector } from "../components/game-selector"
 import { db } from "../database/db"
-// import { toast, ToastContainer, Zoom } from "react-toastify"
-import { toast, Toaster } from "sonner"
-
+import { toast } from "sonner"
+import {useDeviceHandler}  from "../components/custom-hooks/useFavoriteSelector"
+import { GameMapping } from "../components/game-listing"
 async function gameExists(game_id:string){
     const gameData = await db.gameList.where("game_id").equals(game_id).toArray()
     if(gameData.length !=0)
@@ -16,8 +16,14 @@ async function gameExists(game_id:string){
     return false
 }
 function validGame(game_code:string){
-    if(game_code == "_jp_")
-        return true
+    const gameListing = Object.keys(GameMapping)
+    for(const game of gameListing){
+        if(game_code == game){
+            sessionStorage.setItem("game_route",GameMapping[game_code as keyof typeof GameMapping].toLowerCase())
+            localStorage.setItem("game_code",game_code)
+            return true
+        }
+    }
     return false
 }
 
@@ -124,21 +130,42 @@ export default function ScanningPage(){
             sessionStorage.setItem("data-payload",newString!)
         }
      }
+     
+
+    const {deviceListing, setFavoriteDevice, setDeviceInfo, deviceId} = useDeviceHandler()
+    const videoArea = useMemo(()=>{
+        return (
+            <Scanner components={qrComponents} constraints={{deviceId: deviceId! }} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
+        )
+    },[deviceId])
+
     return(
         <>   
-        <Toaster closeButton richColors/>
             <div className="panel">
                 <div>
                         <Header gameClass = "eduplay-header" headerText="EduPlay"/>
                         <div className="scanner-container">
                         <p className="scanner-header-text">Scan Code</p>
-                            <Scanner components={qrComponents} onScan={(result) => handleQrUpdate(result[0].rawValue)}/>
+                        <div className = "video-box">
+                            {videoArea}
                         </div>
+                        </div>
+                        <div className="device-config-area">
+                        <select className = "device-listing" onChange={(e) => setDeviceInfo(e.target.value,e.target.selectedIndex-1)}>
+                            <option disabled value={undefined} style={{color:"white"}}>Select a device</option>
+                            {deviceListing}
+                        </select>
+                        { deviceId != localStorage.getItem("favorite_device_id") &&
+                            <button className="favorite-button" onClick={setFavoriteDevice}>Set Favorite Camera</button>
+                        }
+                        </div>
+                        
                         {
                             readyStatus == true  && 
-                                <Link className="join-area" to={"/jeopardyGame"}>
+                                <Link className="join-area" to={`/${sessionStorage.getItem("game_route")}`}>
                                     <button className="join-button" 
                                         onClick={() => {
+                                                    toast.dismiss("qrnum-toast")
                                                     gameSelector(gameFound,splitData)
                                                 }}>Begin</button></Link>
                         }
